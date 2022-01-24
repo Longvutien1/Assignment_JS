@@ -2,3 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+
+ul li{
+  @apply inline-block px-4 py-2
+}
+footer{
+  @apply bg-blue-900 text-white text-center
+}
