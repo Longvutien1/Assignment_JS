@@ -1,11 +1,15 @@
 import Footer from "../component/footer";
 import Header from "../component/header";
+import ListProduct from "../component/listProduct";
 
 const HomePage = {
-    render() {
+    async render() {
         return /* html */ `
         ${Header.render()}
-            <p>Home page</p>
+            <div class="banner ">
+                <a href=""><img src="https://picsum.photos/2000/400" alt=""></a>
+                <div class="row mt-8">${await ListProduct.render()}</div>
+            </div>
         ${Footer.render()}
         `;
     },
