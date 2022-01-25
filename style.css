@@ -3,16 +3,291 @@
 @tailwind utilities;
 
 
-ul li{
-  @apply inline-block px-4 py-2
-}
-footer{
-  @apply bg-blue-900 text-white text-center
+:root{
+  --green: #27ae60;
+  --dark-color: #219150;
+  --black: #444;
+  --line-color:#666;
+  --border: .1rem solid rgba(0,0,0,.1);
+  --border-hover: .1rem solid var(--black);
+  --box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+
+
 }
 
-.row{
-  @apply grid grid-cols-3 gap-8
+*{
+  font-family: 'Poppins', sans-serif;
+    margin:0; padding:0;
+    box-sizing: border-box;
+    outline: none; border:none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition:all .2s linear;
+    transition:width none;
 }
-.row .col a h3{
-  @apply font-bold text-red-500
+
+
+
+
+.heading{
+  @apply text-center mb-4 relative;
+}
+
+.heading::before{
+  @apply content-none absolute top-1/2 left-0 translate-y-1/2 w-full h-1  z-10;
+  background: rgba(0,0,0,.1);
+}
+
+.heading span{
+  @apply text-2xl px-2 py-4 bg-white;
+  color: var(--black); 
+  border: var(--border);
+}
+
+.btn{
+  @apply mt-4 inline-block px-4 py-12 rounded-lg text-white font-medium text-2xl cursor-pointer;
+  background: var(--green);
+}
+
+.btn:hover{
+  background:var(--dark-color);
+}
+
+section{
+  padding:5rem 9%;
+}
+/*------------------- header ----------------------*/
+
+/* ----------header-top------------------- */
+
+
+.header .header-1{
+  @apply bg-white flex align-middle justify-between;
+  padding: 1.5rem 9%;
+}
+
+.header .header-1 .logo{
+  @apply text-2xl ;
+  font-weight: bolder;
+  color: var(--black);
+}
+
+.header .header-1 .logo i{
+  color:var(--green);
+}
+
+.header .header-1 .search-form{
+    @apply w-4/12 h-10 overflow-hidden bg-white flex items-center rounded-lg;
+    border: var(--border);
+}
+
+.header .header-1 .search-form input{
+  @apply text-xl px-5 w-full h-full normal-case ;
+  color: var(--black);
+}
+
+.header .header-1 .search-form label{
+  @apply text-xl pr-5 cursor-pointer;
+  color: var(--black);
+}
+
+.header .header-1 .search-form label:hover{
+  color:var(--green);
+}
+
+.header .header-1 .icons div,
+.header .header-1 .icons a{
+  @apply text-xl ml-6 cursor-pointer ;
+  color: var(--black);
+}
+
+.header .header-1 .icons div:hover,
+.header .header-1 .icons a:hover{
+    color:var(--green);
+}
+
+#search-btn{
+  @apply hidden;
+}
+
+/* ----------header-main------------------- */
+
+.header .header-2{
+  background: var(--green);
+}
+
+.header .header-2 .navbar {
+  @apply text-center
+}
+
+.header .header-2 .navbar a{
+  @apply text-white inline-block p-3 text-base
+}
+
+.header .header-2 .navbar a:hover{
+  background:var(--dark-color);
+}
+
+.header .header-2.active{
+  @apply fixed top-0 left-0 right-0 z-50
+}
+
+.bottom-navbar{
+  @apply text-center fixed bottom-0 left-0 right-0 z-50 hidden;
+  background: var(--green);
+}
+
+.bottom-navbar a{
+  @apply text-xl p-8 text-white
+}
+
+.bottom-navbar a:hover{
+  background: var(--dark-color);
+}
+
+/* ----------form login------------------ */
+.login-form-container{
+  @apply flex items-center justify-center fixed top-0 left-full z-50 h-full w-full;
+  background:rgba(255,255,255,.9);
+}
+.login-form-container.active{
+  @apply left-0
+}
+
+.login-form-container form{
+  @apply bg-white p-8 rounded-lg m-8;
+  border: var(--border);
+  width: 30rem;
+  box-shadow: var(--box-shadow);
+}
+
+.login-form-container form h3{
+  @apply text-2xl uppercase text-center font-semibold;
+  color: var(--black);
+}
+
+.login-form-container form span{
+  @apply block text-base pt-2
+} 
+
+.login-form-container form .box{
+  @apply w-full my-2 mx-0 text-base rounded-lg py-2 px-5 transform-none;
+  color: var(--black);
+  border: var(--border);
+}
+
+.login-form-container form .checkbox{
+  @apply flex items-center gap-2 py-2 px-0
+}
+
+.login-form-container form  .checkbox label{
+  @apply text-base cursor-pointer;
+  color: var(--line-color);
+}
+
+.login-form-container form .btn{
+  @apply text-center w-full my-4 py-2
+}
+
+.login-form-container form p{
+  @apply pt-3 text-base;
+  color: var(--line-color);
+}
+
+.login-form-container form p a{
+  @apply underline;
+  color: var(--green);
+}
+
+.login-form-container #close-login-btn{
+  @apply absolute top-6 right-10 text-5xl cursor-pointer;
+  color: var(--black); 
+}
+
+
+
+
+
+
+/* media queries  */
+
+@media (max-width:991px){
+
+  html{
+      font-size: 55%;
+  }
+
+  .header .header-1{
+      padding:2rem;
+  }
+
+  section{
+      padding:3rem 2rem;
+  }
+
+}
+
+@media (max-width:768px){
+
+  html{
+      scroll-padding-top: 0;
+  }
+
+  body{
+      padding-bottom: 6rem;
+  }
+
+  .header .header-2{
+      display:none;
+  }
+
+  .bottom-navbar{
+      display: block;
+  }
+
+  #search-btn{
+      display: inline-block;
+  }
+
+  .header .header-1{
+      box-shadow: var(--box-shadow);
+      position: relative;
+  }
+
+  .header .header-1 .search-form{
+      position:absolute;
+      top:-115%; right:2rem;
+      width: 90%;
+      box-shadow: var(--box-shadow);
+  }
+
+  .header .header-1 .search-form.active{
+      top:115%;
+  }
+
+  .home .row .content{
+      text-align: center;
+  }
+
+  .home .row .content h3{
+      font-size: 3.5rem;
+  }
+
+  .newsletter{
+      background-position: right;
+  }
+
+  .newsletter form{
+      margin-left:0;
+      max-width: 100%;
+  }
+
+}
+
+@media (max-width:450px){
+
+  html{
+      font-size: 50%;
+  }
+
 }

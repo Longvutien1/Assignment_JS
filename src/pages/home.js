@@ -13,6 +13,24 @@ const HomePage = {
         ${Footer.render()}
         `;
     },
+
+    afterRender() {
+        const searchForm = document.querySelector(".search-form");
+
+        document.querySelector("#search-btn").onclick = () => {
+            searchForm.classList.toggle("active");
+        };
+
+        const loginForm = document.querySelector(".login-form-container");
+
+        document.querySelector("#login-btn").onclick = () => {
+            loginForm.classList.toggle("active");
+        };
+
+        document.querySelector("#close-login-btn").onclick = () => {
+            loginForm.classList.remove("active");
+        };
+    },
 };
 
 export default HomePage;
