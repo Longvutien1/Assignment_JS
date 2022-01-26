@@ -8,8 +8,8 @@
   --dark-color: #219150;
   --black: #444;
   --line-color:#666;
-  --border: .1rem solid rgba(0,0,0,.1);
-  --border-hover: .1rem solid var(--black);
+  --border: .05rem solid rgba(0,0,0,.1);
+  --border-hover: .05rem solid var(--black);
   --box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
 
 
@@ -30,22 +30,26 @@
 
 
 .heading{
-  @apply text-center mb-4 relative;
+  @apply relative text-center mb-6  font-bold ;
+
 }
 
 .heading::before{
-  @apply content-none absolute top-1/2 left-0 translate-y-1/2 w-full h-1  z-10;
+  @apply  absolute top-1/2 left-0 translate-y-1/2 w-full h-1;
+  content: '';
+  height: .01rem;
+  z-index: -1;
   background: rgba(0,0,0,.1);
 }
 
 .heading span{
-  @apply text-2xl px-2 py-4 bg-white;
+  @apply text-2xl px-6 py-2 bg-white;
   color: var(--black); 
   border: var(--border);
 }
 
 .btn{
-  @apply mt-4 inline-block px-4 py-12 rounded-lg text-white font-medium text-2xl cursor-pointer;
+  @apply mt-4 inline-block px-8 py-2 rounded-lg text-white font-medium text-xl cursor-pointer;
   background: var(--green);
 }
 
@@ -54,7 +58,7 @@
 }
 
 section{
-  padding:5rem 9%;
+  padding:2rem 9%;
 }
 /*------------------- header ----------------------*/
 
@@ -203,6 +207,430 @@ section{
   @apply absolute top-6 right-10 text-5xl cursor-pointer;
   color: var(--black); 
 }
+
+/*  <!-- -------------------home section starts  ----------------> */
+
+.home{
+  @apply bg-cover bg-center;
+  background: url(./image/banner-bg.jpg) no-repeat ;
+
+}
+
+.home .row{
+  @apply flex items-center  gap-6
+}
+
+.home .row .content{
+  flex: 1 1 42rem;
+}
+
+.home .row .books-slider{
+  flex: 1 1 42rem;
+  @apply text-center mt-8
+}
+
+.home .row .books-slider a img {
+  height: 16rem;
+}
+
+.home .row .books-slider a:hover {
+  transform: scale(.9)
+}
+
+.home .row .books-slider .stand{
+  @apply w-full ;
+  margin-top: -1rem;
+}
+
+.home .row .books-slider .swiper-wrapper .swiper-slide{
+  width: auto;
+  
+}
+
+.home .row .content h3{
+  color:var(--black);
+  font-size: 3rem;
+  font-weight: 600
+}
+
+.home .row .content p{
+  @apply text-sm py-4;
+  line-height: 2;
+  color: var(--line-color);
+}
+
+.home .row .content a{
+  @apply py-2 px-8 text-lg
+}
+
+
+/* --------icon container------------------- */
+
+.icons-container{
+  @apply grid gap-8 grid-cols-4;
+  
+}
+
+.icons-container .icons{
+  @apply flex items-center gap-4 py-8;
+ 
+}
+
+.icons-container .icons:hover i{
+  transform: scale(1.2);
+ 
+}
+
+.icons-container .icons i{
+  @apply text-4xl;
+  color: var(--green);
+}
+
+.icons-container .icons h3{
+  @apply text-xl pb-1  font-bold;
+  color: var(--black);
+}
+
+.icons-container .icons p{
+  @apply text-sm;
+  color: var(--line-color);
+}
+
+
+/*  <!-----------------featured section starts -------------------- -->*/
+
+.featured .featured-slider .box{
+  @apply my-4 relative overflow-hidden text-center;
+  border: var(--border);
+}
+
+.featured .featured-slider .box:hover{
+  border:  var(--border-hover) ;
+}
+
+.featured .featured-slider .box .image{
+ padding: 1rem;
+  background: linear-gradient(15deg, #eee 30%, #fff 31%);
+}
+
+
+.featured .featured-slider .box:hover .image{
+  transform: translateY(3rem);
+  z-index: 1;
+}
+.featured .featured-slider .box:hover .image img{
+ 
+  z-index: 1;
+
+}
+.featured .featured-slider .box .image img{
+  height: 15rem;
+  margin: auto;
+}
+
+.featured .featured-slider .box .icons{
+  @apply absolute top-0 left-0 right-0 bg-white z-10;
+  transform: translateY(-105%);
+  border-bottom: var(--border-hover);
+}
+
+.featured .featured-slider .box:hover .icons{
+  transform: translateY(0%);
+}
+
+.featured .featured-slider .box .icons a{
+  color: var(--black);
+  @apply text-lg py-3 px-5
+}
+
+.featured .featured-slider .box .icons a:hover{
+  background: var(--green);
+  color: #fff;
+}
+
+.featured .featured-slider .box .content{
+  background:#eee;
+  padding:1.5rem;
+  z-index: 10000;
+}
+
+.featured .featured-slider .box .content h3{
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.featured .featured-slider .box .content .price{
+  @apply text-lg  font-bold;
+
+  color:var(--black);
+}
+
+.featured .featured-slider .box .content .price span{
+  @apply text-sm ;
+  color:var(--light-color);
+  font-weight: 500;
+  text-decoration: line-through;
+}
+
+.swiper-button-next,
+.swiper-button-prev{
+  @apply h-10 w-10 bg-white;
+  border: var(--border-hover);
+  color: var(--black);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after{
+    font-size: 1.3rem;
+    margin: auto;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover{
+    background: var(--black);
+    color:#fff;
+}
+
+/* -----------------newsletter------------------ */
+.newsletter{
+  background: url(../image/letter-bg.jpg) no-repeat;
+  @apply bg-cover  bg-center bg-fixed mb-8 
+}
+.newsletter form{
+  @apply max-w-md ml-auto text-center py-8
+}
+
+.newsletter form h3{
+  @apply text-lg text-white pb-1 font-normal
+}
+
+.newsletter form .box{
+  @apply w-full my-3 px-6 py-2 text-sm transform-none;
+  border-radius: 0.3rem;
+  color: var(--black);
+}
+
+/* --------------arrivals slider---------------------- */
+
+.arrivals .arrivals-slider .box{
+  @apply flex items-center gap-8 py-6 px-3 my-2;
+  
+}
+
+.arrivals .arrivals-slider .box:hover{
+  border: var(--border-hover);
+}
+
+.arrivals .arrivals-slider .box .image img{
+  height: 10rem;
+}
+
+
+.arrivals .arrivals-slider .box .content h3{
+  @apply text-base;
+  color: var(--black);
+}
+
+.arrivals .arrivals-slider .box .content .price{
+  @apply text-base pb-2;
+  color: var(--black);
+}
+
+.arrivals .arrivals-slider .box .content .price span{
+  @apply text-sm ;
+  text-decoration: line-through;
+  color: var(--line-color);
+  
+}
+
+
+.arrivals .arrivals-slider .box .content .stars i{
+  @apply text-sm ;
+  color: var(--green);
+}
+
+
+/* ------------------------deal---------------------- */
+
+.deal{
+  @apply flex items-center flex-wrap gap-4;
+  background: #f3f3f3;
+}
+
+.deal .content{
+  flex: 1 1 35rem;
+}
+
+.deal .image{
+  flex: 1 1 35rem;
+}
+
+.deal .image img{
+  width: 100%;
+}
+
+.deal .content h3{
+  @apply text-2xl pb-1 font-bold;
+  color: var(--green);
+
+
+}
+
+.deal .content h1{
+  color: var(--black);
+  font-size: 2.5rem;
+  font-weight: 600
+}
+
+.deal .content p{
+  @apply py-2 text-sm;
+  line-height: 2;
+  color: var(--line-color);
+}
+
+
+/* <!-- --------------------reviews section starts  -------------> */
+.reviews .reviews-slider .box{
+  border: var(--border);
+  @apply p-4 text-center my-4
+}
+
+.reviews .reviews-slider .box:hover{
+  border: var(--border-hover);
+}
+
+.reviews .reviews-slider .box img{
+  @apply h-20 w-20 m-auto;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.reviews .reviews-slider .box h3{
+  @apply text-lg py-2;
+  color: var(--black);
+}
+
+.reviews .reviews-slider .box .stars{
+  @apply pt-2
+}
+
+.reviews .reviews-slider .box .stars i{
+  @apply text-base ;
+  color: var(--green);
+}
+
+
+/*------------------------ blogs -----------------*/
+
+.blogs .blogs-slider .box{
+  @apply my-8;
+  border: var(--border);
+}
+
+.blogs .blogs-slider .box:hover{
+  border: var(--border-hover);
+}
+
+.blogs .blogs-slider .box .image{
+  @apply h-60 w-full overflow-hidden
+}
+
+.blogs .blogs-slider .box .image img{
+  @apply h-full w-full ;
+  object-fit: cover;
+  
+}
+
+.blogs .blogs-slider .box:hover .image img{
+  transform: scale(1.1);
+}
+
+.blogs .blogs-slider .box .content{
+  padding: 1rem;
+}
+
+.blogs .blogs-slider .box .content h3{
+  @apply text-xl font-bold;
+  color: var(--black);
+}
+
+.blogs .blogs-slider .box .content p{
+  @apply py-2;
+  line-height: 1.5;
+ font-size: 14px;
+}
+
+.blogs .blogs-slider .box .content .btn{
+  @apply text-base;
+  border-radius: 5px;
+}
+
+/* -----------------footer------------------- */
+
+.footer .box-container{
+  @apply grid grid-cols-4 gap-8 mt-8
+}
+
+.footer .box-container .box h3{
+  @apply text-xl py-3 font-bold;
+  color: var(--black);
+}
+
+.footer .box-container .box a{
+  @apply block text-sm py-2;
+  color: var(--line-color);
+}
+
+.footer .box-container .box a i{
+  color: var(--green);
+  padding-right: .3rem;
+}
+
+.footer .box-container .box a:hover i{
+  padding-right: 1rem;
+}
+
+.footer .box-container .box .map{
+  width:100%;
+}
+.footer .share {
+  @apply text-center ;
+ 
+}
+.footer .share a{
+  @apply h-12 w-12 text-lg text-white mx-2 items-center text-center m-auto ;
+  background: var(--green);
+  border-radius: 50%;
+  line-height: 3rem;
+}
+
+.footer .share a:hover{
+  background:  var(--black);
+}
+
+.footer .credit{
+  @apply mt-5 px-3 pt-8 text-xl text-center;
+  color: var(--line-color); 
+  border-top: var(--border);
+}
+
+.footer .credit span{
+  color: var(--green);
+}
+
+.loader-container{
+  @apply fixed top-0 left-0 h-full w-full z-50 bg-yellow-50 flex items-center justify-center
+}
+
+.loader-container.active{
+  display: none;
+}
+
+.loader-container img{
+  height:8rem;
+}
+
 
 
 
