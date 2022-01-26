@@ -3,89 +3,117 @@
       {
         "id": "13",
         "title": "Mrs. Drew Farrell 222",
-        "img": "http://placeimg.com/640/480/sports",
-        "desc": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles"
+        "img": "image/book-1.png",
+        "desc": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+        "price_old": "$20.99",
+        "price_now": "$15.99"
       },
       {
         "id": "14",
-        "img": "http://placeimg.com/640/480/sports",
+        "img": "image/book-2.png",
         "title": "Lorena Cole 232323",
-        "desc": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients"
+        "desc": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+        "price_old": "$20.99",
+        "price_now": "$15.99"
       },
       {
         "id": "15",
-        "img": "http://placeimg.com/640/480/sports",
+        "img": "image/book-3.png",
         "title": "Vừa sửa 21212",
-        "desc": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit"
+        "desc": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+        "price_old": "$20.99",
+        "price_now": "$15.99"
       },
       {
         "id": "16",
-        "img": "http://placeimg.com/640/480/sports",
+        "img": "image/book-4.png",
         "title": "anh dep trai so 2 khong ai so 11",
-        "desc": "day la mo ta"
+        "desc": "day la mo ta",
+        "price_old": "$20.99",
+        "price_now": "$15.99"
       },
       {
         "createdAt": "2022-01-10T20:33:27.477Z",
         "title": "Yolanda Roob",
-        "img": "http://placeimg.com/640/480/sports",
+        "img": "image/book-5.png",
         "desc": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
-        "id": "19"
+        "id": "19",
+        "price_old": "$20.99",
+        "price_now": "$15.99"
       },
       {
-        "0": {
-          "createdAt": "2022-01-10T20:33:27.477Z",
-          "title": "Bài viết mới",
-          "img": "http://placeimg.com/640/480/sports",
-          "desc": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
-          "id": "2"
-        },
+        "createdAt": "2022-01-10T20:33:27.477Z",
+        "title": "Bài viết mới",
+        "img": "image/book-6.png",
+        "desc": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+        "id": "2",
+        "price_old": "$20.99",
+        "price_now": "$15.99"
+      },
+      {
+  
         "createdAt": "2022-01-18T23:32:25.238Z",
         "title": "Bennie Moore",
-        "img": "http://placeimg.com/640/480/sports",
+        "img": "image/book-7.png",
         "desc": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
-        "id": "21"
+        "id": "21",
+        "price_old": "$20.99",
+        "price_now": "$15.99"
       },
       {
         "createdAt": "2022-01-18T09:17:36.448Z",
         "title": "David Beahan",
-        "img": "http://placeimg.com/640/480/cats",
+        "img": "image/book-8.png",
         "desc": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
-        "id": "22"
+        "id": "22",
+        "price_old": "$20.99",
+        "price_now": "$15.99"
       },
       {
         "createdAt": "2022-01-18T19:58:18.894Z",
         "title": "Erin Herman",
-        "img": "http://placeimg.com/640/480/fashion",
+        "img": "image/book-9.png",
         "desc": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
-        "id": "23"
+        "id": "23",
+        "price_old": "$20.99",
+        "price_now": "$15.99"
       },
       {
         "createdAt": "2022-01-18T19:25:18.728Z",
         "title": "Genevieve Upton II",
-        "img": "http://placeimg.com/640/480/cats",
+        "img": "image/book-10.png",
         "desc": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
-        "id": "25"
+        "id": "25",
+        "price_old": "$20.99",
+        "price_now": "$15.99"
+      },
+       {
+        "createdAt": "2022-01-10T20:33:27.477Z",
+        "title": "Bài viết mới frreewrertr",
+        "img": "image/book3.png",
+        "desc": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+        "id": "2",
+        "price_old": "$20.99",
+        "price_now": "$15.99"
       },
       {
-        "0": {
-          "createdAt": "2022-01-10T20:33:27.477Z",
-          "title": "Bài viết mới frreewrertr",
-          "img": "http://placeimg.com/640/480/sports",
-          "desc": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
-          "id": "2"
-        },
+      
         "createdAt": "2022-01-18T12:48:44.521Z",
         "title": "Martha Bauch",
-        "img": "http://placeimg.com/640/480/people",
+        "img": "image/book5.png",
         "desc": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
-        "id": "27"
+        "id": "27",
+        "price_old": "$20.99",
+        "price_now": "$15.99"
       },
       {
         "createdAt": "2022-01-19T01:45:11.910Z",
         "title": "Trần Văn Kiên",
-        "img": "https://picsum.photos/1500/400",
+        "img": "image/book7.png",
         "desc": "Chú thích người dùng",
-        "id": "29"
+        "id": "29",
+        "price_old": "$20.99",
+        "price_now": "$15.99"
       },
       {
         "createdAt": "2022-01-18T08:16:02.361Z",
