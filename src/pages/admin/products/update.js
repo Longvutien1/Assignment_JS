@@ -1,4 +1,5 @@
-import { getProductById } from "../../../api/products";
+import axios from "axios";
+import { getProductById, update } from "../../../api/products";
 import NavAdmin from "../../../component/NavAdmin";
 
 const adminUpdate = {
@@ -8,7 +9,7 @@ const adminUpdate = {
 
         // console.log(data);
         return /* html */ `
-        ${NavAdmin.render()}
+        ${NavAdmin.render()}  
         <header class="bg-white shadow">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <div class="lg:flex lg:items-center lg:justify-between">
@@ -28,7 +29,7 @@ const adminUpdate = {
             </div>
         </div>
     </header>
-        <div class="mt-8">
+        <section class="mt-8">
             <div class="md:grid md:grid-cols-3 md:gap-6">
               <div class="md:col-span-1">
                 <div class="px-4 sm:px-0">
@@ -66,11 +67,9 @@ const adminUpdate = {
                         </label>
                         <div class="mt-1 flex items-center">
                           <span class="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
-                            <img src="${data.img}" alt="">
+                            <img id="img-preview" src="${data.img}" alt="">
                           </span>
-                          <button type="button" class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                            Change
-                          </button>
+                        
                         </div>
                       </div>
 
@@ -85,8 +84,8 @@ const adminUpdate = {
                             </svg>
                             <div class="flex text-sm text-gray-600">
                               <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                                <span>Upload a file</span>
-                                <input id="img-port" name="file-upload" type="file" class="sr-only" >
+                              <span>Upload a file</span>
+                              <input id="file-upload" name="file-upload" type="file" class="sr-only">
                               </label>
                               <p class="pl-1">or drag and drop</p>
                             </div>
@@ -106,11 +105,44 @@ const adminUpdate = {
                 </form>
               </div>
             </div>
-        </div>
+        </section>
 
         `;
     },
 
+    afterRender(id) {
+        console.log(id);
+        const formEdit = document.querySelector("#form-edit");
+        const CLOUDINARY_PRESET = "longchanhthon";
+        const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/chanh-thon/image/upload";
+
+        formEdit.addEventListener("submit", async (a) => {
+            a.preventDefault();
+            // lấy giá trị input file
+            const file = document.querySelector("#file-upload").files[0];
+            // gắn vào đối tượng form data
+            const formData = new FormData();
+            formData.append("file", file);
+            formData.append("upload_preset", CLOUDINARY_PRESET);
+
+            // call api cloudinary để up ảnh lên
+            const { data } = await axios.post(CLOUDINARY_API_URL, formData, {
+                headers: {
+                    "Content-Type": "application/form-data",
+                },
+            });
+            console.log(data.url);
+            // call api thêm bai viết
+            update({
+                id,
+                title: document.querySelector("#title-port").value,
+                img: data.url,
+                desc: document.querySelector("#desc-port").value,
+            }).then(() => {
+                alert("Update Successfully");
+            });
+        });
+    },
 };
 
 export default adminUpdate;
