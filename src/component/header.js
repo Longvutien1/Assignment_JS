@@ -1,8 +1,12 @@
+import toastr from "toastr";
+import { reRender } from "../utils";
+import "toastr/build/toastr.min.css";
+
 const Header = {
     render() {
         return /* html */ `
 
-        <header class="header">
+        <header class="header" id="header">
 
             <div class="header-1">
 
@@ -16,22 +20,33 @@ const Header = {
             <div class="icons">
                 <div id="search-btn" class="fas fa-search"></div>
                 <a href="" class="fas fa-heart"></a>
-                <a href="" class="fas fa-shopping-cart"></a>
-                <div id="login-btn" class="fas fa-user"></div>
+                <a href="/cart" class="fas fa-shopping-cart"></a>
+                <a href="sign_in" class="fas fa-user"></a>
+               
             </div>
 
             </div>
             <div class="header-2">
-                <nav class="navbar">
-                    <a href="/">Home page</a>
-                    <a href="/about">featured</a>
-                    <a href="/sign_in">arrivals</a>
-                    <a href="/sign_in">reviews</a>
-                    <a href="/sign_in">blogs</a>
-                    <a href="/sign_in">Sign In</a>
-                    <a href="/sign_up">Sign Up</a>
-                    <a href="/admin">admin</a>
+                <nav class="navbar2">
+                    <a href="/#/">Home page</a>
+                    <a href="/#/about">featured</a>
+                    <a href="sign_in">arrivals</a>
+                    <a href="sign_in">reviews</a>
+                    <a href="sign_in">blogs</a>
+                    <a href="/#/admin">admin</a>
+
+                     <!-- nếu đã đăng nhập hoặc tồn tại user thì hiển thị tên -->
+                    ${localStorage.getItem("user") ? `
+                        <span id="accountInfo">Username </span>
+                        <a id="logout">Logout</a>
+                     
+                    ` : ""}
+
+                
                 </nav>
+               
+                
+              
             </div>
         </header>
 
@@ -39,7 +54,7 @@ const Header = {
 
         <!-- bottom navbar  -->
 
-        <nav class="bottom-navbar">
+        <nav class="bottom-navbar2">
             <a href="#home" class="fas fa-home"></a>
             <a href="#featured" class="fas fa-list"></a>
             <a href="#arrivals" class="fas fa-tags"></a>
@@ -48,30 +63,25 @@ const Header = {
         </nav>
         
 
-         <!-- login form -->
-        <div class="login-form-container">
-
-            <div id="close-login-btn" class="fas fa-times"></div>
-
-            <form action="">
-                <h3>Sign In</h3>
-                <span>User Name</span>
-                <input type="email" name="" id="" class="box" placeholder="Enter your email">
-                <span>Password</span>
-                <input type="password" name="" id="" class="box" placeholder="Enter your password">
-
-                <div class="checkbox">
-                    <input type="checkbox" name="" id="remember-me">
-                    <label for="remember-me">Remember me</label>
-                </div>
-
-                <input type="submit" value="Sign In" class="btn">
-                <p>Forget password ? <a href="">Click here</a></p>
-                <p>Don't have an account ? <a href="#">Create one</a></p>
-            </form>
-
-        </div>
+        
         `;
+    },
+
+    afterRender() {
+        // lấy thông tin từ localstorage và hiển thị ra ngoài
+        const logout = document.querySelector("#logout");
+        const username = document.querySelector("#accountInfo");
+        if (username) {
+            username.innerHTML = JSON.parse(localStorage.getItem("user")).user.username;
+            console.log(JSON.parse(localStorage.getItem("user")).user);
+        }
+        if (logout) {
+            logout.addEventListener("click", () => {
+                localStorage.removeItem("user");
+                reRender(Header, "#header");
+                toastr.success("Logout thành công");
+            });
+        }
     },
 
 };

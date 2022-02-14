@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root{
+  --green: #27ae60;
+  --dark-color: #219150;
+  --black: #444;
+  --line-color:#666;
+  --border: .05rem solid rgba(0,0,0,.1);
+  --border-hover: .05rem solid var(--black);
+  --box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+
+
+}
+
+*{
+  font-family: 'Poppins', sans-serif;
+    margin:0; padding:0;
+    box-sizing: border-box;
+    outline: none; border:none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition:all .2s linear;
+    transition:width none;
+}
+
+
+.container_detail{
+    @apply flex flex-wrap ;
+    
+}
+.image-detail{
+    flex: 1 2 11rem;
+}
+.image-detail .mini{
+    @apply flex gap-2;
+}
+.product-information{
+    @apply my-4;
+    flex: 1 2 35rem;
+}
+.product-information .price_now{
+    @apply py-4 text-4xl;
+    color:var(--green) ;
+}
+.product-information .price_now .price_old{
+   @apply text-lg line-through ml-2;
+    color:var(--line-color) ;
+}
+
+.product-information .stars i{
+  
+    color:var(--green) ;
+}
+
+.product-information .quantity {
+    @apply py-4 my-4;
+    border-top: 1px solid var(--line-color);
+}
+
+.product-information .quantity input{
+    border: var(--border);
+ 
+    @apply w-2/12 ;
+}
+
+.product-information .buttons{
+    @apply flex gap-4 flex-wrap mt-4;
+  
+  }
+  
+  .product-information .buttons a{
+    @apply p-2.5 px-8 text-base ;
+    
+    color:#444;
+    
+  }
+  
+  
+  .product-information .buttons a.cart{
+    border:.05rem solid var(--dark-color);
+    background: var(--green);
+    color:#fff;
+  }
+  
+  .product-information .buttons a.buy{
+    border:.05rem solid var(--black);
+   
+    color:var(--black);
+   
+  }
+  
+  .product-information .buttons a.cart:hover{
+    background: var(--dark-color);
+  }
+  
+  .product-information .buttons a.buy:hover{
+    border:.05rem solid  var(--dark-color);
+    background: var(--dark-color);
+    color:#fff;
+  }
+  
+
+
+  /* -------------------commen start------------ */
+  
+  .comment .title{
+    @apply text-2xl font-bold mb-2  ;
+   
+  }
+  .comment .content{
+    @apply py-4
+  }
+  .comment .content .info{
+    @apply flex gap-4 items-center ;
+  }
+  .comment .content .info div p{
+    @apply font-semibold ;
+  }
+  .comment .content .info a img{
+    border-radius: 50%;
+  }
+
+  .comment .content .info .stars i{
+    color: var(--green);
+    @apply text-sm;
+  }
+
+ 

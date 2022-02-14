@@ -9,15 +9,15 @@ const HomePage = {
             <!-- home section starts  -->
             <section class="home" id="home">
 
-                <div class="row">
+                <div class="row2">
 
                     <div class="content">
                         <h3>upto 73% off</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi animi facere vel reprehenderit ullam reiciendis dignissimos. Quia, sint dolor.</p>
-                        <a href="" class="btn">Shop now</a>
+                        <a href="" class="btn-shop-now">Shop now</a>
                     </div>
 
-                    <div class="swiper books-slider">
+                    <div class="swiper books-slider z-0">
 
                         <div class="swiper-wrapper">
                             <a href="#" class="swiper-slide"><img src="image/book-1.png" alt=""></a>
@@ -82,9 +82,9 @@ const HomePage = {
 
                 <h1 class="heading"> <span>featured books</span></h1>
         
-                <div class="swiper featured-slider">
+                <div class="swiper featured-slider z-0">
                     
-                    <div class="swiper-wrapper">
+                    <div class="swiper-wrapper products-container ">
         
                         ${await ListProduct.render()}
                         
@@ -92,6 +92,10 @@ const HomePage = {
 
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
+                </div>
+
+                <div class="products-preview">
+                    ${await ListProduct.render2()}
                 </div>
                
             </section>
@@ -116,17 +120,17 @@ const HomePage = {
 
             <section class="arrivals" id="arrivals">
 
-                <h1 class="heading"> <span>new arrivals</span> </h1>
+                <h1 class="heading -z-10"> <span>new arrivals</span> </h1>
 
-                <div class="swiper arrivals-slider" >
+                <div class="swiper arrivals-slider " >
 
-                    <div class="swiper-wrapper">
+                    <div class="swiper-wrapper ">
                         ${await ListProduct.listArrivals()}
                     </div>
 
                 </div>
 
-                <div class="swiper arrivals-slider" >
+                <div class="swiper arrivals-slider " >
 
                     <div class="swiper-wrapper">
                         ${await ListProduct.listArrivals()}
@@ -161,13 +165,13 @@ const HomePage = {
 
             <section class="reviews" id="reviews">
 
-                <h1 class="heading"> <span>Members reviews</span> </h1>
+                <h1 class="heading -z-10"> <span>Members reviews</span> </h1>
 
-                <div class="swiper reviews-slider" >
+                <div class="swiper reviews-slider  " >
 
-                    <div class="swiper-wrapper">
+                    <div class="swiper-wrapper ">
 
-                        <div class="swiper-slide box">
+                        <div class="swiper-slide box ">
                         <img src="image/pic-1.png" alt="">
                             <h3>Long Vũ Tiến</h3>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur nihil ipsa placeat. Aperiam at sint, eos ex similique facere hic.</p>
@@ -185,12 +189,12 @@ const HomePage = {
                             <h3>Vũ Tiến Long</h3>
                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur nihil ipsa placeat. Aperiam at sint, eos ex similique facere hic.</p>
                             <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
                         </div>
 
                         <div class="swiper-slide box">
@@ -243,9 +247,9 @@ const HomePage = {
              <!-- blogs section starts  -->
             <section class="blogs" id="blogs">
 
-                <h1 class="heading"> <span>our blogs</span> </h1>
+                <h1 class="heading -z-10"> <span>our blogs</span> </h1>
 
-                <div class="swiper blogs-slider">
+                <div class="swiper blogs-slider ">
 
                     <div class="swiper-wrapper">
 
@@ -266,21 +270,12 @@ const HomePage = {
         `;
     },
 
-    afterRender() {
+    async afterRender() {
+        Header.afterRender();
         const searchForm = document.querySelector(".search-form");
 
         document.querySelector("#search-btn").onclick = () => {
             searchForm.classList.toggle("active");
-        };
-
-        const loginForm = document.querySelector(".login-form-container");
-
-        document.querySelector("#login-btn").onclick = () => {
-            loginForm.classList.toggle("active");
-        };
-
-        document.querySelector("#close-login-btn").onclick = () => {
-            loginForm.classList.remove("active");
         };
 
         const swiper = new Swiper(".books-slider", {
@@ -398,11 +393,31 @@ const HomePage = {
                 },
             },
         });
-        swiper.on();
-        swiper2.on();
-        swiper3.on();
-        swiper4.on();
-        swiper5.on();
+
+        const preveiwContainer = await document.querySelector(".products-preview");
+        const previewBox = await preveiwContainer.querySelectorAll(".preview");
+
+        document.querySelectorAll(".product").forEach((product) => {
+            // eslint-disable-next-line no-param-reassign
+            product.onclick = () => {
+                preveiwContainer.style.display = "flex";
+                const name = product.getAttribute("data-name");
+                previewBox.forEach((preview) => {
+                    const target = preview.getAttribute("data-target");
+                    if (name === target) {
+                        preview.classList.add("active");
+                    }
+                });
+            };
+        });
+
+        previewBox.forEach((close) => {
+            // eslint-disable-next-line no-param-reassign
+            close.querySelector(".fa-times").onclick = () => {
+                close.classList.remove("active");
+                preveiwContainer.style.display = "none";
+            };
+        });
     },
 
 };

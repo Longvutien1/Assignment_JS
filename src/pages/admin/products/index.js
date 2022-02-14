@@ -1,3 +1,4 @@
+import { remove } from "../../../api/products";
 import NavAdmin from "../../../component/NavAdmin";
 import adminList from "./list";
 
@@ -25,12 +26,29 @@ const ProductPage = {
                 </div>
             </div>
         </header>
-            <main>
+            <section>
                 ${await adminList.render()}
-            </main>
+            </section>
         </div>
     
                     `;
+    },
+
+    afterRender() {
+        const buttons = document.querySelectorAll(".btn");
+        buttons.forEach((btn) => {
+            const { id } = btn.dataset;
+            // console.log(id);
+            btn.addEventListener("click", () => {
+                const confirm = window.confirm("Bạn có muốn xóa bài viết này không ?");
+                if (confirm) {
+                    console.log(id);
+                    remove(id).then(() => {
+                        alert("Delete Success");
+                    });
+                }
+            });
+        });
     },
 
 };

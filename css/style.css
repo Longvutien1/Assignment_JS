@@ -48,13 +48,14 @@
   border: var(--border);
 }
 
-.btn{
+.btn-shop-now{
   @apply mt-4 inline-block px-8 py-2 rounded-lg text-white font-medium text-xl cursor-pointer;
   background: var(--green);
 }
 
-.btn:hover{
+.btn-shop-now:hover{
   background:var(--dark-color);
+  color: white;
 }
 
 section{
@@ -120,15 +121,15 @@ section{
   background: var(--green);
 }
 
-.header .header-2 .navbar {
+.header .header-2 .navbar2 {
   @apply text-center
 }
 
-.header .header-2 .navbar a{
-  @apply text-white inline-block p-3 text-base
+.header .header-2 .navbar2 a{
+  @apply text-white inline-block p-3 text-base 
 }
 
-.header .header-2 .navbar a:hover{
+.header .header-2 .navbar2 a:hover{
   background:var(--dark-color);
 }
 
@@ -136,22 +137,22 @@ section{
   @apply fixed top-0 left-0 right-0 z-50
 }
 
-.bottom-navbar{
+.bottom-navbar2{
   @apply text-center fixed bottom-0 left-0 right-0 z-50 hidden;
   background: var(--green);
 }
 
-.bottom-navbar a{
+.bottom-navbar2 a{
   @apply text-xl p-8 text-white
 }
 
-.bottom-navbar a:hover{
+.bottom-navbar2 a:hover{
   background: var(--dark-color);
 }
 
 /* ----------form login------------------ */
 .login-form-container{
-  @apply flex items-center justify-center fixed top-0 left-full z-50 h-full w-full;
+  @apply flex items-center justify-center fixed z-50 h-full w-full;
   background:rgba(255,255,255,.9);
 }
 .login-form-container.active{
@@ -165,8 +166,13 @@ section{
   box-shadow: var(--box-shadow);
 }
 
+.login-form-container form input{
+  
+  text-transform: none
+}
+
 .login-form-container form h3{
-  @apply text-2xl uppercase text-center font-semibold;
+  @apply text-2xl  text-center font-semibold;
   color: var(--black);
 }
 
@@ -190,11 +196,13 @@ section{
 }
 
 .login-form-container form .btn{
-  @apply text-center w-full my-4 py-2
+  @apply text-center w-full my-4 py-2;
+  background: var(--green)
+  
 }
 
 .login-form-container form p{
-  @apply pt-3 text-base;
+  @apply pt-3 text-base ;
   color: var(--line-color);
 }
 
@@ -212,54 +220,54 @@ section{
 
 .home{
   @apply bg-cover bg-center;
-  background: url(./image/banner-bg.jpg) no-repeat ;
+  background: url(../image/banner-bg.jpg) no-repeat ;
 
 }
 
-.home .row{
+.home .row2{
   @apply flex items-center  gap-6
 }
 
-.home .row .content{
+.home .row2 .content{
   flex: 1 1 42rem;
 }
 
-.home .row .books-slider{
+.home .row2 .books-slider{
   flex: 1 1 42rem;
   @apply text-center mt-8
 }
 
-.home .row .books-slider a img {
+.home .row2 .books-slider a img {
   height: 16rem;
 }
 
-.home .row .books-slider a:hover {
+.home .row2 .books-slider a:hover {
   transform: scale(.9)
 }
 
-.home .row .books-slider .stand{
+.home .row2 .books-slider .stand{
   @apply w-full ;
   margin-top: -1rem;
 }
 
-.home .row .books-slider .swiper-wrapper .swiper-slide{
+.home .row2 .books-slider .swiper-wrapper .swiper-slide{
   width: auto;
   
 }
 
-.home .row .content h3{
+.home .row2 .content h3{
   color:var(--black);
   font-size: 3rem;
   font-weight: 600
 }
 
-.home .row .content p{
+.home .row2 .content p{
   @apply text-sm py-4;
   line-height: 2;
   color: var(--line-color);
 }
 
-.home .row .content a{
+.home .row2 .content a{
   @apply py-2 px-8 text-lg
 }
 
@@ -392,6 +400,109 @@ section{
     color:#fff;
 }
 
+.products-preview{
+  @apply fixed top-0 left-0 w-full hidden items-center justify-center;
+  min-height: 100vh;
+  background: rgba(0,0,0,.8);
+}
+
+.products-preview .preview{
+  @apply hidden p-6 text-center bg-white relative m-6  z-50;
+  width: 27%;
+
+}
+
+.products-preview .preview.active{
+  display: inline-block;
+
+}
+
+.products-preview .preview img{
+  height: 20rem;
+  margin: auto;
+}
+
+.products-preview .preview .fa-times{
+  @apply absolute top-4 right-6 cursor-pointer text-3xl;
+
+  color:var(--green);
+ 
+}
+
+.products-preview .preview .fa-times:hover{
+  transform: rotate(90deg);
+}
+
+.products-preview .preview h3{
+  @apply text-2xl py-2;
+  color:var(--black);
+ 
+}
+
+.products-preview .preview .stars{
+
+  font-size: 1rem;
+}
+
+.products-preview .preview .stars i{
+  color:var(--green);
+}
+
+.products-preview .preview .stars span{
+  color:var(--line-color);
+}
+
+.products-preview .preview p{
+  @apply text-sm py-2;
+  line-height: 1.5;
+  color:var(--line-color);
+}
+
+.products-preview .preview .price{
+  @apply py-2 text-2xl;
+  color:var(--green);
+}
+
+.products-preview .preview .buttons{
+  @apply flex gap-4 flex-wrap mt-4;
+
+}
+
+.products-preview .preview .buttons a{
+  @apply p-2.5 text-base ;
+  flex:1 1;
+  color:#444;
+  
+}
+
+.products-preview .preview .buttons a.cart{
+  border:.05rem solid var(--dark-color);
+  background: var(--green);
+  color:#fff;
+}
+
+.products-preview .preview .buttons a.buy{
+  border:.05rem solid var(--black);
+ 
+  color:var(--black);
+ 
+}
+
+.products-preview .preview .buttons a.cart:hover{
+  background: var(--dark-color);
+}
+
+.products-preview .preview .buttons a.buy:hover{
+  border:.05rem solid  var(--dark-color);
+  background: var(--dark-color);
+  color:#fff;
+}
+
+
+
+
+
+
 /* -----------------newsletter------------------ */
 .newsletter{
   background: url(../image/letter-bg.jpg) no-repeat;
@@ -419,7 +530,7 @@ section{
   
 }
 
-.arrivals .arrivals-slider .box:hover{
+.arrivals .arrivals-slider  .box:hover{
   border: var(--border-hover);
 }
 
@@ -670,7 +781,7 @@ section{
       display:none;
   }
 
-  .bottom-navbar{
+  .bottom-navbar2{
       display: block;
   }
 
@@ -694,11 +805,11 @@ section{
       top:115%;
   }
 
-  .home .row .content{
+  .home .row2 .content{
       text-align: center;
   }
 
-  .home .row .content h3{
+  .home .row2 .content h3{
       font-size: 3.5rem;
   }
 
@@ -719,4 +830,23 @@ section{
       font-size: 50%;
   }
 
+}
+#menu_sidebar li {
+  position: relative;
+}
+
+#menu_sidebar li  #menu2{
+  display: none;
+  
+  text-align: center;
+  top: -50px;
+  transition:all 2s linear;
+}
+
+#menu_sidebar li  #menu2.active{
+  transition:all 2s linear;
+  display: inline-block;
+  
+  top: 0px;
+ 
 }

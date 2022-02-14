@@ -1,0 +1,102 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root{
+  --green: #27ae60;
+  --dark-color: #219150;
+  --black: #444;
+  --hr: #ddd;
+  --line-color:#666;
+  --border: .05rem solid rgba(0,0,0,.1);
+  --border-hover: .05rem solid var(--black);
+  --box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+
+
+}
+
+*{
+  font-family: 'Poppins', sans-serif;
+    margin:0; padding:0;
+    box-sizing: border-box;
+    outline: none; border:none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition:all .2s linear;
+    transition:width none;
+}
+
+
+.cart h1{
+    @apply text-3xl my-8 font-bold;
+
+}
+.cart .container-cart {
+    @apply grid grid-cols-12 gap-16;
+}
+
+.cart .container-cart .list_product  {
+    border-top: 1px solid var(--hr);
+    @apply col-span-7   ;
+}
+
+.cart .container-cart .list_product .product_cart  {
+    border-bottom: 1px solid var(--hr);
+    @apply  flex gap-4 py-8  w-full relative;
+}
+
+
+.cart .container-cart .list_product .product_cart  .info-product{  
+  @apply  grid grid-cols-2 gap-4  w-full ;
+}
+
+.cart .container-cart .list_product .info-product .name{
+    @apply text-xl font-bold;
+}
+
+.cart .container-cart .list_product .info-product .price{ 
+    @apply text-lg py-2;
+}
+
+.cart .container-cart .list_product .product_cart .del{ 
+    @apply absolute top-0 right-0 mt-8 text-xl font-normal;
+}
+
+.cart .container-cart .list_product .product_cart .del:hover{
+    transform: rotate(90deg);
+    color: var(--green)
+}
+
+.cart .container-cart .list_product .info-product input{
+   border: 1px solid var(--black);
+   border-radius: 1rem; 
+  
+   @apply p-1 px-2
+}
+
+
+
+.cart .container-cart .order {
+    @apply col-span-5 p-8 h-80;
+    background: #F8F9FA;
+    border-radius: 10px
+    
+}
+
+.cart .container-cart .order h2{
+    @apply font-semibold text-xl;
+   
+}
+
+.dl_don_hang{
+    @apply flex justify-between py-2;
+    border-bottom: 1px solid var(--hr);
+}
+
+.don_hang .btn_thanh_toan{
+    background-color: var(--green);
+    @apply w-full py-2 text-white;
+    border-radius: 8px;
+}
