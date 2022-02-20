@@ -3,8 +3,8 @@
     {
       "id": "13",
       "title": "Mrs. Drew Farrell",
-      "img": "http://res.cloudinary.com/chanh-thon/image/upload/v1644555319/upload_preset/bc3t30agueitc1a4o3ao.png",
-      "desc": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles"
+      "img": "http://res.cloudinary.com/ecommercer2021/image/upload/v1645162980/gdwetb0b540peclqczl7.jpg",
+      "desc": ""
     },
     {
       "id": "14",
@@ -184,42 +184,269 @@
       "id": "rGq0A0R"
     },
     {
-      "id": "EU0q3Xf",
-      "title": "looooo 22",
-      "img": "https://res.cloudinary.com/chanh-thon/image/upload/v1644223204/upload_preset/olryv1vps648fzzsrge0.jpg",
-      "desc": "hggh"
+      "id": "rd-4Lup",
+      "title": "Chanh thon long 2-15 laanf 2",
+      "img": "http://res.cloudinary.com/chanh-thon/image/upload/v1644908511/upload_preset/lqxfhtrkxf47qx3hoxea.png",
+      "desc": "1212"
+    },
+    {
+      "title": "hUU ",
+      "img": "https://res.cloudinary.com/chanh-thon/image/upload/v1644908587/upload_preset/lwnpwlbviyyhle9wwwqn.png",
+      "desc": "12",
+      "id": "kiaklNT"
+    },
+    {
+      "title": "dUC",
+      "img": "https://res.cloudinary.com/chanh-thon/image/upload/v1644908627/upload_preset/g6icrakpcfhy9c1cc32t.png",
+      "desc": "1",
+      "id": "sT05OER"
     }
   ],
   "users": [
     {
+      "id": 17,
+      "fullname": "Long Chanh Thôn",
+      "img": "http://res.cloudinary.com/chanh-thon/image/upload/v1645163281/upload_preset/ig1fmv3jyxsljegbcaos.png",
+      "email": "admin@gmail.com.vn",
+      "password": "$2a$10$H1YGalocuM2u0kLXRULeFOVQldMnC6N/Bgkz05MKyZLoF72F.V.Zq",
+      "phone": "0392127565",
+      "address": "Hà nội",
+      "role": "Female"
+    },
+    {
+      "id": 24,
+      "fullname": "hữu Nguyễn",
+      "img": "http://res.cloudinary.com/chanh-thon/image/upload/v1645350311/upload_preset/gaaihopncf1h8egdocth.png",
+      "email": "Chanhdad11@gmail.com",
+      "password": "$2a$10$YVkbkNaW7DZlw5ys7iWf/uvB4cBdxGv5d5hefS0ujo70J2cwLM2Ci",
+      "phone": "0392127565",
+      "address": "Hà nội",
+      "role": {
+        "0": {},
+        "1": {}
+      }
+    },
+    {
+      "id": 25,
+      "fullname": "Vũ Tiến Long",
+      "img": "http://res.cloudinary.com/chanh-thon/image/upload/v1645118186/upload_preset/zlim90cy1liwd7ahfdcw.png",
+      "email": "long@gmail.com.ga",
+      "password": "$2a$10$K0pCt2pThsQVNxR9stgwpORUKGiH77gDxFANg4/XvFfNxYOGoMMw.",
+      "phone": "01211211212",
+      "address": "Nghệ An",
+      "role": {
+        "0": {},
+        "1": {}
+      }
+    },
+    {
+      "email": "ga@gmail.com",
+      "password": "$2a$10$z9xffrj/wKnJknvudpSGIOxBLcq.qjdVUZIXQFHS2s9Cx9F9a4t1e",
+      "fullname": "Vũ Tiến Long",
+      "img": "https://res.cloudinary.com/chanh-thon/image/upload/v1645109459/upload_preset/mrbvysc9cc6r8umuqhij.png",
+      "role": "Female",
+      "id": 28
+    },
+    {
+      "email": "all@gmail.com",
+      "password": "$2a$10$10Ca0xj7w8vPfvNgxBXX3.VZuODWnGdEylKb1s3dJ5/QdFih5VSMO",
+      "fullname": "Vũ Tiến Long",
+      "img": "https://res.cloudinary.com/chanh-thon/image/upload/v1645109607/upload_preset/ftk8x5yticxe56npnkll.jpg",
+      "role": "Female",
+      "id": 29
+    },
+    {
+      "email": "aaaaaa@gmail.com",
+      "password": "$2a$10$sj6AEust0raWWJQ7dGHYCOqYfLzfWljiVd1kBWOiHEUgmqYAlfTfq",
+      "fullname": "Vũ Tiến Long",
+      "img": "https://res.cloudinary.com/chanh-thon/image/upload/v1645109968/upload_preset/zsddckn682w9tkzfm6wm.png",
+      "role": "Male",
+      "id": 32
+    },
+    {
+      "email": "aaaa@gmail.com",
+      "password": "$2a$10$OTSWNA7vuoXG4h/zwYFKcuD2kGXFoRpafRNRZx/reydGfaYXH8bxu",
+      "fullname": "Vũ Tiến Long",
+      "img": "https://res.cloudinary.com/chanh-thon/image/upload/v1645110053/upload_preset/bssxzonfga7rdmbq09ls.png",
+      "role": "Male",
+      "id": 33
+    },
+    {
+      "email": "aaaaa@gmail.com",
+      "password": "$2a$10$duXQn.JjiMXMZMNf09Zqn.pxW0Hag9NHKIftqExavOyIVLMA.t2gC",
+      "fullname": "Vũ Tiến Long",
+      "img": "https://res.cloudinary.com/chanh-thon/image/upload/v1645110133/upload_preset/wiumrohbm5bkh2eues8d.png",
+      "address": "Phu xuyen",
+      "phone": "+84378923745",
+      "role": "Female",
+      "id": 34
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$TD.KKNCkVl6X1Bt.Ib/BOOTWz1Fgh7rPp1OgZdgZSeKPyESi9nw.2",
+      "username": "Long Chanh thôn",
+      "id": 35
+    },
+    {
+      "email": "ducchanhthon@gmail.com",
+      "password": "$2a$10$Dv2fRlMGmYpZDD5ykFbYLeclLXALpHy7U69iY46Jucz6RjXLMTnhe",
+      "fullname": "Nguyễn Minh đức",
+      "img": "https://res.cloudinary.com/chanh-thon/image/upload/v1645173199/upload_preset/xe8hi8gtfl9qdlh54vr2.jpg",
+      "address": "Phu xuyen",
+      "phone": "+84378923745",
+      "role": "Male",
+      "id": 36
+    },
+    {
+      "id": 37,
+      "fullname": "Vũ Tiến Long",
+      "img": "http://res.cloudinary.com/chanh-thon/image/upload/v1645346719/upload_preset/x1lt1svhouvdrueqtzxb.png",
       "email": "longvtph14046@fpt.edu.vn",
-      "password": "$2a$10$bYOPvMA4IVGN6qRV3ilzKOTgUZs6HGlzT5I6bcHSiwGS4r4NzXQt2",
-      "username": "Vũ Tiến Long",
+      "password": "$2a$10$GE6BTwg814qUr9RxDWZXtO1v.XIEQ5Y5Lvkx/Nlk09lbiUwfdPr/i",
+      "phone": "+84378923745",
+      "address": "Phu xuyen",
+      "role": "Male"
+    },
+    {
+      "email": "duc@gmail.edu",
+      "password": "$2a$10$dsmdg6uuoAJuEa9jZYwzveiGjQDaP5F.25aycdBWg0WH2NkWlxr76",
+      "fullname": "Nguyễn Minh Đức",
+      "img": "http://res.cloudinary.com/chanh-thon/image/upload/v1645349112/upload_preset/nlyv10dc2ujphh1mkewc.png",
+      "address": "Phu xuyen",
+      "phone": "+84378923745",
+      "role": "Male",
+      "id": 38
+    },
+    {
+      "email": "longvt@gmail.com",
+      "password": "$2a$10$6uHeNQO1wpCstYtrJOTzOOqGBxIBO31CV6gIeAPftYRIR6WmUa7r.",
+      "fullname": "Vũ Tiến Long",
+      "img": "http://res.cloudinary.com/chanh-thon/image/upload/v1645349205/upload_preset/mvqviv2ulce9cedrnjb9.png",
+      "address": "Phu xuyen",
+      "phone": "+84378923745",
+      "id": 39
+    },
+    {
+      "email": "longvtph14046@fpt.edi",
+      "password": "$2a$10$8aQdx.RdUco/sfPnZkBiBeoypGEyLVAYlvek7TIfRMViGjrghBLMC",
+      "fullname": "Vũ Tiến Long",
+      "img": "http://res.cloudinary.com/chanh-thon/image/upload/v1645349368/upload_preset/fj76gy6whceczbteuyrr.png",
+      "address": "Phu xuyen",
+      "phone": "+84378923745",
+      "role": "Male",
+      "id": 40
+    },
+    {
+      "id": 41,
+      "fullname": "Vũ Tiến Long",
+      "img": "http://res.cloudinary.com/chanh-thon/image/upload/v1645352789/upload_preset/egoiilnwuvjmk1dsmex0.png",
+      "email": "aa@gmail.edu",
+      "password": "$2a$10$G9Ixt39E.ROwAi/NNzWzXepSV2EMjGu3QuUlraZH1C3pr4LHhQ4f2",
+      "phone": "0392127565",
+      "address": "Argentina",
+      "role": "Male"
+    }
+  ],
+  "products": [
+    {
+      "id": 6,
+      "productName": "long 211111",
+      "img": "http://res.cloudinary.com/chanh-thon/image/upload/v1645342604/upload_preset/wkbpd6xv38ugjexk6dri.png",
+      "price": "11",
+      "quantity": "222",
+      "description": "fdgggff",
+      "view": 5
+    },
+    {
+      "id": 19,
+      "productName": "Long chanh thoon 23",
+      "img": "http://res.cloudinary.com/chanh-thon/image/upload/v1645008919/upload_preset/h8zfz5dfmq4yzkiztnzi.jpg",
+      "view": 1,
+      "categoryId": "1"
+    },
+    {
+      "id": 31,
+      "productName": "Chanh thon",
+      "img": "https://res.cloudinary.com/chanh-thon/image/upload/v1645012067/upload_preset/fjegsnd5olcn7eolrvom.jpg",
+      "price": "12",
+      "quantity": "12",
+      "description": "vd",
+      "view": 2,
+      "categoryId": "1"
+    },
+    {
+      "productName": "Chanh thon",
+      "img": "https://res.cloudinary.com/chanh-thon/image/upload/v1645012260/upload_preset/ap5tr0oortcya91acuhp.jpg",
+      "price": "1212",
+      "quantity": "121",
+      "description": "fedfe",
+      "id": 33,
+      "view": 0,
+      "categoryId": "1"
+    },
+    {
+      "id": 34,
+      "productName": "Vũ Tiến Long",
+      "img": "https://res.cloudinary.com/chanh-thon/image/upload/v1645110133/upload_preset/wiumrohbm5bkh2eues8d.png",
+      "username": "aaaaa@gmail.com",
+      "password": "$2a$10$duXQn.JjiMXMZMNf09Zqn.pxW0Hag9NHKIftqExavOyIVLMA.t2gC",
+      "phone": "+84378923745",
+      "address": "Phu xuyen",
+      "view": 0,
+      "categoryId": "3"
+    },
+    {
+      "id": 35,
+      "productName": "Đắc nhâm tâm",
+      "img": "http://res.cloudinary.com/chanh-thon/image/upload/v1645240446/upload_preset/ilbtgaowitycctayvepw.png",
+      "price": "11.00",
+      "quantity": "100",
+      "description": "Hà Nội: Học sinh các huyện, thị xã và học sinh lớp 7 đến lớp 12 ở các quận vẫn học trực tiếp",
+      "view": 6
+    },
+    {
+      "productName": "trên đường băng",
+      "img": "https://res.cloudinary.com/chanh-thon/image/upload/v1645341227/upload_preset/swwvfzna4y4jrli77rnu.png",
+      "price": "10",
+      "quantity": "1",
+      "description": "long xahcanhf ưdwdd",
+      "view": 0,
+      "id": 37
+    },
+    {
+      "productName": "Vũ Tiến Long",
+      "img": "https://res.cloudinary.com/chanh-thon/image/upload/v1645341436/upload_preset/snedlmyq3wkqrrzh9en0.png",
+      "price": "11",
+      "quantity": "12",
+      "description": "ffedff",
+      "view": 0,
+      "id": 38
+    }
+  ],
+  "categories": [
+    {
+      "nameCategories": "Sách Bán chạy",
       "id": 1
     },
     {
-      "email": "longvtph14046@gmail.com",
-      "password": "$2a$10$24NzwQ7izlK32RgcpLHizOKKVwh2mC0A2MQYbPMNFDp9Efps/Fjmq",
-      "username": "Vũ Tiến Long người dùng",
-      "id": 2
-    },
-    {
-      "email": "duc@gmail.com",
-      "password": "$2a$10$qWyEz8RM3ofOQl5T4bJxI..eOa74Y4XtjkeI0quaX48n8eGFth0kC",
-      "username": "Nguyễn Minh Đức",
+      "nameCategories": "Truyền thông",
       "id": 3
     },
     {
-      "email": "huu@gmail.com",
-      "password": "$2a$10$bXRw5jM0pRwRor3j2H1NJeVjpplJhBorlyLFi8uJfFSLggT90erJ2",
-      "username": "Nguyễn Văn Hữu",
-      "id": 4
+      "id": 4,
+      "nameCategories": "Naruto And sasuke"
     },
     {
-      "email": "longvtph140@gmail.com",
-      "password": "$2a$10$Q95PgIyzQkCsv9h.MCpavOwmP4sh1zZlk0rRRRNl1.uRRJCKnSmvC",
-      "username": "Nguyễn Văn Hữu",
+      "nameCategories": "Báo",
       "id": 5
+    },
+    {
+      "nameCategories": "Tiểu thuyết",
+      "id": 6
+    },
+    {
+      "nameCategories": "Sách giáo khoa",
+      "id": 7
     }
   ]
 }

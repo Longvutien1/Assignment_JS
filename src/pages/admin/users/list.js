@@ -1,10 +1,13 @@
-import $ from "jquery";
-import { getAllProduct, remove } from "../../../api/products";
+import toastr from "toastr";
+import { getAllProduct } from "../../../api/products";
+import { removeUser } from "../../../api/users";
 import ListProduct from "../../../component/listProduct";
 import NavAdmin from "../../../component/NavAdmin";
 import { reRender } from "../../../utils";
 
-const adminList = {
+import "toastr/build/toastr.min.css";
+
+const adminListUser = {
     async render() {
         const { data } = await getAllProduct();
         console.log(data);
@@ -13,7 +16,7 @@ const adminList = {
 
         ${NavAdmin.render()}
 
- <section class="home-admin">
+  <section class="home-admin">
        <div class="dashboard py-4 px-4 pb-8" style="background-color: #fff;  border-radius: 10px;">
            <h1 class=" text-4xl my-4">List Product</h1>
          <div class="grid grid-cols-4 gap-4 mb-8">
@@ -96,28 +99,10 @@ const adminList = {
              
          </div>
        
-        
+
          </div>
 
          <div class="flex flex-col mt-4">
-            <div class="page my-8">
-            <ul>
-                <li class="btn-prev btn-active fas fa-angle-left"></li>
-                <div class="number-page" id="number-page">
-                
-                    <!-- <li class="active">
-                    <a>1</a>
-                    </li>
-                    <li>
-                        <a>2</a>
-                    </li>
-                    <li>
-                        <a>3</a>
-                    </li> -->
-                </div>
-                <li class="btn-next fas fa-angle-right"></li>
-            </ul>
-        </div>
          <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
              <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
              <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -131,13 +116,19 @@ const adminList = {
                      IMAGE
                  </th>
                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                     PRODUCT NAME
+                     EMAIL
                  </th>
                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                     PRICE
+                     FULL NAME
                  </th>
                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    QUANTITY
+                     PHONE
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                     ADDRESS
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      ROLE
                 </th>
                  <th colspan="2" scope="col" class="text-center px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                      Status
@@ -147,15 +138,14 @@ const adminList = {
                  </th>
                  </tr>
              </thead>
-                    <tbody class="bg-white divide-y divide-gray-200" id="product">
-                        ${await ListProduct.listProductAdmin(1)}
-                     </tbody>
+ 
+                     ${await ListProduct.listUserAdmin()}
+                     
         
                  </table>
              </div>
              </div>
          </div>
- 
 
  </section>
 
@@ -164,7 +154,7 @@ const adminList = {
         `;
     },
 
-    async afterRender() {
+    afterRender() {
         // menu2
         const body = document.querySelector("body");
         const sidebar = body.querySelector("nav");
@@ -205,6 +195,7 @@ const adminList = {
         const buttons = document.querySelectorAll(".btn");
 
         buttons.forEach((btn) => {
+            // eslint-disable-next-line no-shadow
             const { id } = btn.dataset;
             // console.log(id);
             btn.addEventListener("click", () => {
@@ -212,108 +203,15 @@ const adminList = {
                 const confirm = window.confirm("Bạn có muốn xóa bài viết này không ?");
                 if (confirm) {
                     console.log(id);
-                    remove(id).then(() => {
-                        alert("Delete Success");
-                        reRender(adminList, "#app");
+                    removeUser(id).then(() => {
+                        // alert("Delete Success");
+                        toastr.success("Đăng kí thành công, chuyển trang sau 2s");
+                        reRender(adminListUser, "#app");
                     });
                 }
             });
         });
-
-        // phân trang
-
-        const { data } = await getAllProduct();
-        const totalPages = Math.ceil(data.length / 5);
-        console.log(totalPages);
-        // console.log(totalPages);
-        let html = "";
-        html += `<li class="current-page active"><a>${1}</a></li>`;
-        // eslint-disable-next-line no-plusplus
-        for (let i = 2; i <= totalPages; i++) {
-            html += `<li><a>${i}</a></li>`;
-        }
-        if (totalPages === 0) {
-            html = "";
-        }
-        document.getElementById("number-page").innerHTML = html;
-
-        //
-        const idPages = document.querySelectorAll(".number-page li");
-        // const a = document.querySelectorAll(".number-page li a");
-        // eslint-disable-next-line no-plusplus
-        for (let i = 0; i < idPages.length; i++) {
-            // eslint-disable-next-line no-loop-func
-            idPages[i].onclick = async function () {
-                const value = i + 1;
-                const current = document.getElementsByClassName("active");
-                current[0].className = current[0].className.replace("active", "");
-                this.classList.add("active");
-                if (value > 1 && value < idPages.length) {
-                    $(".btn-prev").removeClass("btn-active");
-                    $(".btn-next").removeClass("btn-active");
-                }
-                if (value === 1) {
-                    $(".btn-prev").addClass("btn-active");
-                    $(".btn-next").removeClass("btn-active");
-                }
-                if (value === idPages.length) {
-                    $(".btn-next").addClass("btn-active");
-                    $(".btn-prev").removeClass("btn-active");
-                }
-                if (value) {
-                    const product2 = document.querySelector("#product");
-                    product2.innerHTML = await ListProduct.listProductAdmin(value);
-                    // console.log(value);
-                }
-            };
-        }
-        let idPage = 1;
-        $(".btn-next").on("click", async () => {
-            // eslint-disable-next-line no-plusplus
-            idPage++;
-            if (idPage > totalPages) {
-                idPage = totalPages;
-            }
-            if (idPage === totalPages) {
-                $(".btn-next").addClass("btn-active");
-            } else {
-                $(".btn-next").removeClass("btn-active");
-            }
-
-            const btnPrev = document.querySelector(".btn-prev");
-            btnPrev.classList.remove("btn-active");
-            $(".number-page li").removeClass("active");
-            $(`.number-page li:eq(${idPage - 1})`).addClass("active");
-            if (idPage) {
-                const product2 = document.querySelector("#product");
-                product2.innerHTML = await ListProduct.listProductAdmin(idPage);
-                // console.log(idPage);
-            }
-        });
-
-        $(".btn-prev").on("click", async () => {
-            // eslint-disable-next-line no-plusplus
-            idPage--;
-            if (idPage <= 0) {
-                idPage = 1;
-            }
-            if (idPage === 1) {
-                $(".btn-prev").addClass("btn-active");
-            } else {
-                $(".btn-prev").removeClass("btn-active");
-            }
-            const btnNext = document.querySelector(".btn-next");
-            btnNext.classList.remove("btn-active");
-            $(".number-page li").removeClass("active");
-            $(`.number-page li:eq(${idPage - 1})`).addClass("active");
-            if (idPage) {
-                const product2 = document.querySelector("#product");
-                product2.innerHTML = await ListProduct.listProductAdmin(idPage);
-                console.log(idPage);
-            }
-        });
-        // console.log(idPage);
     },
 };
 
-export default adminList;
+export default adminListUser;

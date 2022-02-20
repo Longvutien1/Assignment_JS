@@ -2,21 +2,21 @@ import axios from "axios";
 import $ from "jquery";
 // eslint-disable-next-line no-unused-vars
 import validate from "jquery-validation";
-
-import { add } from "../../../api/products";
+import { addNewUser } from "../../../api/users";
+// import { add } from "../../../api/products";
 import NavAdmin from "../../../component/NavAdmin";
 import { reRender } from "../../../utils";
 
-const adminNewAdd = {
+const addUser = {
     async render() {
         return /* html */`
 
 
-          ${NavAdmin.render()}
+        ${NavAdmin.render()}
 
       <section class="home-admin">
             <div class="dashboard py-4 px-4 pb-8" style="background-color: #fff;  border-radius: 10px;">
-                <h1 class=" text-4xl my-4">Dashboard</h1>
+                <h1 class=" text-4xl my-4">ADD USER</h1>
               <div class="grid grid-cols-4 gap-4 mb-8">
                 
                 <div class="cot1 text-white">
@@ -107,49 +107,95 @@ const adminNewAdd = {
                        
                           <div >
                               <label for="about" class="block text-sm font-medium text-gray-700"  >
-                                  Product Name
+                              Full Name
                               </label>
-                              <input type="text"  name="name-product" id="name-product" class="shadow-sm border-solid px-2 py-1 w-full mt-1 border focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="Product Name">
+                              <input type="text" name="fullname" id="fullname" 
+                               class="shadow-sm border-solid px-2 py-1 w-full mt-1 border focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="Full Name">
                 
-                          </div>  
+                          </div>
                        
                         <div>
                           <label for="about" class="block text-sm font-medium text-gray-700" >
-                            Product Price
+                            User Name
                           </label>
-                          <input type="number" name="price-product" id="price-product" class="shadow-sm border-solid px-2 py-1 w-full mt-1 border focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="Product Price">
+                          <input type="email" name="username" id="username" style="text-transform: none" class="shadow-sm border-solid px-2 py-1 w-full mt-1 border focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="UserName@gmail.com">
                          
                         </div>
 
                         <div >
                             <label for="about" class="block text-sm font-medium text-gray-700"  >
-                                Product Quantity
+                                Password
                             </label>
-                            <input type="number" name="quantity-product" id="quantity-product" class="shadow-sm border-solid px-2 py-1 w-full mt-1 border focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="Quantity Product">
+                            <input type="password" name="password" id="password" style="text-transform: none" class="shadow-sm border-solid px-2 py-1 w-full mt-1 border focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="Password">
               
                         </div>
 
                         <div>
                           <label for="about" class="block text-sm font-medium text-gray-700">
-                            Description
+                            Confirm Password
                           </label>
                           <div class="mt-1">
-                            <textarea id="description-product" name="description-product" rows="3" class="border-solid px-2 py-1 w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Description"></textarea>
+                          <input type="password" name="confirm-password" id="confirm-password" style="text-transform: none" class="shadow-sm border-solid px-2 py-1 w-full mt-1 border focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="Confirm Password">
                           </div>
                         
                         </div>
-                  
+
                         <div>
-                        <label class="block text-sm font-medium text-gray-700">
-                          Photo
-                        </label>
-                        <div class="mt-1 flex items-center">
-                          <span class="inline-block h-36 w-36 rounded-full overflow-hidden bg-gray-100">
-                            <img id="img-preview" src="" alt="" >
-                          </span> 
+                          <label for="about" class="block text-sm font-medium text-gray-700">
+                            Role
+                          </label>
+                          <div class="mt-1 flex gap-4">
+                            <div class=" flex gap-1">
+                              <input type="radio" name="role" id="role" class="my-auto" placeholder="Role" value="Male">
+                              <label for="company-website" class="block text-sm font-medium text-gray-700 ">
+                                Male
+                              </label>
+                             
+                            </div>
+
+                            <div class=" flex gap-1">
+                              <input type="radio" name="role" id="role" class="my-auto " placeholder="Role" value="Female">
+                              <label for="Nữ" class="block text-sm font-medium text-gray-700 ">
+                                Female
+                              </label>
+                             
+                            </div>
+                          </div>
+                      
+                        </div>
+
+                        <div>
+                          <label for="about" class="block text-sm font-medium text-gray-700">
+                              Address
+                          </label>
+                          <div class="mt-1">
+                          <input type="text" name="address" id="address" class="shadow-sm border-solid px-2 py-1 w-full mt-1 border focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="Address">
+                          </div>
                         
                         </div>
-                      </div>
+
+                        <div>
+                          <label for="about" class="block text-sm font-medium text-gray-700">
+                              Phone
+                          </label>
+                          <div class="mt-1">
+                          <input type="text" name="phone" id="phone" class="shadow-sm border-solid px-2 py-1 w-full mt-1 border focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="Phone">
+                          </div>
+                        
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">
+                              Photo
+                            </label>
+                            <div class="mt-1 flex items-center">
+                              <span class="inline-block h-36 w-36 rounded-full overflow-hidden bg-gray-100">
+                                <img id="img-preview" src="" alt="" >
+                              </span>
+                            
+                            </div>
+                          </div>
+    
                         
                         <div>
                           <label class="block text-sm font-medium text-gray-700">
@@ -157,7 +203,7 @@ const adminNewAdd = {
                           </label>
                           <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                             <div class="space-y-1 text-center">
-                              <svg id="img-preview" class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                              <svg  class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
                                 <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                               </svg>
                               <div class="flex text-sm text-gray-600">
@@ -233,50 +279,95 @@ const adminNewAdd = {
             menu2User.classList.toggle("active");
         });
 
-        // const formAdd = document.querySelector("#form-add-post");
+        // console.log("add product");
         const formAdd = $("#form-add-post");
         const CLOUDINARY_PRESET = "longchanhthon";
         const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/chanh-thon/image/upload";
         const imgPreview = document.querySelector("#img-preview");
         const imgPost = document.querySelector("#file-upload");
+
         // eslint-disable-next-line no-unused-vars
         let imgLink = "";
+
+        // eslint-disable-next-line vars-on-top
 
         imgPost.addEventListener("change", (e) => {
             // handle sự kiện change để xem ảnh trên local
             imgPreview.src = URL.createObjectURL(e.target.files[0]);
         });
-
         formAdd.validate({
             rules: {
-                "name-product": {
+                fullname: {
                     required: true,
                     minlength: 6,
                 },
-                "price-product": {
-                    required: true,
-                    minlength: 2,
-                },
-                "quantity-product": {
-                    required: true,
-                    minlength: 1,
-                },
-                "description-product": {
+                username: {
                     required: true,
                     minlength: 6,
+                },
+                password: {
+                    required: true,
+                    minlength: 6,
+                },
+
+                "confirm-password": {
+                    required: true,
+                    minlength: 6,
+                    equalTo: "#password",
                 },
                 "file-upload": {
                     required: true,
                     minlength: 6,
                 },
+                address: {
+                    required: true,
+                    minlength: 6,
+                },
+                phone: {
+                    required: true,
+                    minlength: 10,
+                },
+                role: {
+                    required: "#role:checked",
+                    minlength: 1,
+                },
 
             },
             messages: {
-                "name-product": {
+                fullname: {
                     required: "This Field Is Required. ",
-                    minlength: "At least more than 5 characters ",
-                    color: "red",
+                    minlength: "At least more than 6 characters ",
                 },
+                username: {
+                    required: "This Field Is Required. ",
+                    minlength: "At least more than 6 characters ",
+                },
+                password: {
+                    required: "This Field Is Required. ",
+                    minlength: "At least more than 6 characters ",
+                },
+                "confirm-password": {
+                    required: "This Field Is Required. ",
+                    minlength: "At least more than 6 characters ",
+                    equaltTo: "Password doesn't match ",
+                },
+                "file-upload": {
+                    required: "You have not selected a photo ",
+                    minlength: "You have not selected a photo",
+                },
+                address: {
+                    required: "This Field Is Required. ",
+                    minlength: "At least more than 6 characters ",
+                },
+                phone: {
+                    required: "This Field Is Required. ",
+                    minlength: "At least more than 6 characters ",
+                },
+                role: {
+                    required: "This Field Is Required. ",
+                    minlength: "At least more than 6 characters ",
+                },
+
             },
             submitHandler: () => {
                 async function handleAddpost() {
@@ -293,17 +384,25 @@ const adminNewAdd = {
                         });
                         imgLink = data.url;
                     }
-                    add({
-                        productName: document.querySelector("#name-product").value,
-                        img: imgLink,
-                        price: document.querySelector("#price-product").value,
-                        quantity: document.querySelector("#quantity-product").value,
-                        description: document.querySelector("#description-product").value,
-                        view: 0,
-                    }).then(() => {
-                        alert("Add Successfully");
-                        reRender(adminNewAdd, "#app");
+                    let role = document.querySelectorAll("#role");
+                    role.forEach((e) => {
+                        if (e.checked === true) {
+                            role = e.value;
+                        }
                     });
+                    setTimeout(addNewUser({
+                        fullname: document.querySelector("#fullname").value,
+                        img: imgLink,
+                        email: document.querySelector("#username").value,
+                        password: document.querySelector("#password").value,
+                        address: document.querySelector("#address").value,
+                        phone: document.querySelector("#phone").value,
+                        role,
+
+                    }).then(() => {
+                        alert("Add User Successfully");
+                        reRender(addUser, "#app");
+                    }), 2000);
                 }
                 handleAddpost();
             },
@@ -312,4 +411,4 @@ const adminNewAdd = {
 
 };
 
-export default adminNewAdd;
+export default addUser;

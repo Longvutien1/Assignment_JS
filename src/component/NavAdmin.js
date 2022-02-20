@@ -1,150 +1,208 @@
 const NavAdmin = {
     render() {
         return /* html */`
+        <nav class="sidebar close" >
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <a href="" class="logo" ><i class="fas fa-book text-3xl" style="color:#27AE60"></i> </a>
+                </span>
 
+                <div class="text logo-text">
+
+                    <span class="profession ">myBook</span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+                  <div class="menu">
+
+                      <li class="search-box">
+                          <i class='bx bx-search icon'></i>
+                          <input type="text" placeholder="Search...">
+                      </li>
+
+                      <ul class="menu-links">
+                      <li class="nav-link">
+                      <a href="/">
+                      <i class='bx bx-home-alt icon'></i>
+                          <span class="text nav-text">Home</span>
+                        
+                      </a>
+                  </li>
+
+                  <li class="nav-link">
+                        <a  id="menu-category">
+                            <i class='bx bx-category icon'></i>
+                            <span class="text nav-text">Category</span>
+                            <i class='bx bx-chevron-down icon icon2'></i>
+                        </a>
+
+                        <ul  id="menu2-category" >
+                            <li  class="nav-link">
+                                <a href="/#/admin/categories/add">
+                                <i class='bx bx-category icon'></i>
+                                <span class=" nav-text">Add Category</span>
+                                </a>
+                            </li>
+
+                            <li  class="nav-link">
+                                <a href="/admin/categories/list">
+                                <i class='bx bx-category icon'></i>
+                                <span class=" nav-text">List Category</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </li>
+                  <li class="nav-link">
+                      <a  id="menu-product">
+                          <i class='bx bxl-product-hunt icon'></i>
+                          <span class="text nav-text">Product</span>
+                          <i class='bx bx-chevron-down icon icon2 '></i>
+                      </a>
+                      
+                      <ul  id="menu2-product" >
+                          <li  class="nav-link">
+                              <a href="/#/admin/products/add">
+                              <i class='bx bxs-plus-circle icon'></i>
+                              <span class=" nav-text">Add Product</span>
+                              </a>
+                          </li>
+
+                          <li  class="nav-link">
+                              <a href="/#/admin/products/list">
+                              <i class='bx bxl-paypal icon'></i>
+                              <span class=" nav-text">List Product</span>
+                              </a>
+                          </li>
+                        </ul>
+                  </li>
+
+                    <li class="nav-link">
+                        <a  id="menu-user">
+                            <i class='bx bx-user icon'></i>
+                            <span class="text nav-text">User</span>
+                            <i class='bx bx-chevron-down icon icon2'></i>
+                        </a>
+
+                        <ul  id="menu2-user" >
+                            <li  class="nav-link">
+                                <a href="/#/admin/users/add">
+                                <i class='bx bx-user-plus icon'></i>
+                                <span class=" nav-text">Add User</span>
+                                </a>
+                            </li>
+
+                            <li  class="nav-link">
+                                <a href="/admin/users/list">
+                                <i class='bx bxs-user-detail icon' ></i>
+                                <span class=" nav-text">List User</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </li>
+
+                    
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-bell icon'></i>
+                            <span class="text nav-text">Notifications</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-pie-chart-alt icon'></i>
+                            <span class="text nav-text">Analytics</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-heart icon'></i>
+                            <span class="text nav-text">Likes</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-wallet icon'></i>
+                            <span class="text nav-text">Wallets</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="">
+                    <a href="#">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+
+                <li class="mode">
+                  <div class="sun-moon">
+                      <i class='bx bx-moon icon moon'></i>
+                      <i class='bx bx-sun icon sun'></i>
+                  </div>
+                  <span class="mode-text text">Dark mode</span>
+
+                  <div class="toggle-switch">
+                      <span class="switch"></span>
+                  </div>
+              </li>
+
+            </div>
+        </div>
+
+    </nav>
      
 
-        <nav class="bg-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex items-center justify-between h-16">
-            <div class="flex items-center">
-              <div class="flex-shrink-0">
-                <img class="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
-              </div>
-              <div class="hidden md:block">
-                <div class="ml-10 flex items-baseline space-x-4">
-                  <a href="/admin" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
-                    aria-current="page">Dashboard</a>
-                  <a href="/"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
-  
-                  <a href="/admin/news"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">News</a>
-  
-                  <a href="/admin/products"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Products</a>
-  
-                  <a href="/admin/orders"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Order</a>
-  
-                  <a href="/admin/settings"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Settings</a>
-                </div>
-              </div>
-            </div>
-            <div class="hidden md:block">
-              <div class="ml-4 flex items-center md:ml-6">
-                <button type="button"
-                  class="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                  <span class="sr-only">View notifications</span>
-                  <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                  </svg>
-                </button>
-  
-                <div class="ml-3 relative group">
-                  <div>
-                    <button type="button"
-                      class="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                      id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                      <span class="sr-only">Open user menu</span>
-                      <img class="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt="">
-                    </button>
-                  </div>
-                  <div
-                    class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden group-hover:block"
-                    role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
-                      id="user-menu-item-0">Your Profile</a>
-  
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
-                      id="user-menu-item-1">Settings</a>
-  
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
-                      id="user-menu-item-2">Sign out</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="-mr-2 flex md:hidden">
-              <button type="button"
-                class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                aria-controls="mobile-menu" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
-                <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                  stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-                <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                  stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-  
-        <div class="md:hidden" id="mobile-menu">
-          <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a href="/admin/dashboard" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
-              aria-current="page">Dashboard</a>
-  
-            <a href="/admin/news"
-              class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">News</a>
-              
-  
-            <a href="/admin/products"
-              class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Products</a>
-  
-            <a href="/admin/orders"
-              class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Orders</a>
-  
-            <a href="/admin/settings"
-              class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Settings</a>
-          </div>
-          <div class="pt-4 pb-3 border-t border-gray-700">
-            <div class="flex items-center px-5">
-              <div class="flex-shrink-0">
-                <img class="h-10 w-10 rounded-full"
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  alt="">
-              </div>
-              <div class="ml-3">
-                <div class="text-base font-medium leading-none text-white">Tom Cook</div>
-                <div class="text-sm font-medium leading-none text-gray-400">tom@example.com</div>
-              </div>
-              <button type="button"
-                class="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                <span class="sr-only">View notifications</span>
-                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                  stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                </svg>
-              </button>
-            </div>
-            <div class="mt-3 px-2 space-y-1">
-              <a href="#"
-                class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700">Your
-                Profile</a>
-  
-              <a href="#"
-                class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700">Settings</a>
-  
-              <a href="#"
-                class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700">Sign
-                out</a>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-     
         `;
+    },
+    afterRender() {
+        // menu2
+        const body = document.querySelector("body");
+        const sidebar = body.querySelector("nav");
+        const toggle = body.querySelector(".toggle");
+        const searchBtn = body.querySelector(".search-box");
+        const modeSwitch = body.querySelector(".toggle-switch");
+        const modeText = body.querySelector(".mode-text");
+
+        toggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        });
+
+        searchBtn.addEventListener("click", () => {
+            sidebar.classList.remove("close");
+        });
+
+        modeSwitch.addEventListener("click", () => {
+            body.classList.toggle("dark");
+
+            if (body.classList.contains("dark")) {
+                modeText.innerText = "Light mode";
+            } else {
+                modeText.innerText = "Dark mode";
+            }
+        });
+
+        const menu2Product = document.querySelector("#menu2-product");
+        document.querySelector("#menu-product").addEventListener("click", () => {
+            menu2Product.classList.toggle("active");
+        });
+
+        const menu2User = document.querySelector("#menu2-user");
+        document.querySelector("#menu-user").addEventListener("click", () => {
+            menu2User.classList.toggle("active");
+        });
     },
 };
 export default NavAdmin;

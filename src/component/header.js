@@ -19,9 +19,11 @@ const Header = {
 
             <div class="icons">
                 <div id="search-btn" class="fas fa-search"></div>
-                <a href="" class="fas fa-heart"></a>
-                <a href="/cart" class="fas fa-shopping-cart"></a>
+               
+                <a href="/cart" class="fas fa-shopping-cart"> <span class="text-sm">${JSON.parse(localStorage.getItem("cart")) ? JSON.parse(localStorage.getItem("cart")).length : ""}<span></a>
                 <a href="sign_in" class="fas fa-user"></a>
+               
+                <a id="logout" class="text-xl"><i class='bx bx-log-out-circle bx-rotate-180' ></i></a>
                
             </div>
 
@@ -29,17 +31,23 @@ const Header = {
             <div class="header-2">
                 <nav class="navbar2">
                     <a href="/#/">Home page</a>
-                    <a href="/#/about">featured</a>
-                    <a href="sign_in">arrivals</a>
-                    <a href="sign_in">reviews</a>
-                    <a href="sign_in">blogs</a>
-                    <a href="/#/admin">admin</a>
+                    <a href="/#/shop">Shop</a>
+                    <a href="/#/">featured</a>
+                    <a href="/#/">arrivals</a>
+                    <a href="/#/">reviews</a>
+                    <a href="/#/">blogs</a>
+                    <!-- <a href="/#/admin">admin</a>-->
+                   
+                    <!-- nếu đã đăng nhập = user admin thì hiện admin -->
+                    ${JSON.parse(localStorage.getItem("user")).user.id === 35 ? `
+                
+                    <a href="/#/admin" >admin</a>
 
+                    ` : ""}
                      <!-- nếu đã đăng nhập hoặc tồn tại user thì hiển thị tên -->
                     ${localStorage.getItem("user") ? `
-                        <span id="accountInfo">Username </span>
-                        <a id="logout">Logout</a>
-                     
+                        <span id="accountInfo"> ${JSON.parse(localStorage.getItem("user")).user.username} </span>
+                       
                     ` : ""}
 
                 
@@ -77,9 +85,12 @@ const Header = {
         }
         if (logout) {
             logout.addEventListener("click", () => {
-                localStorage.removeItem("user");
-                reRender(Header, "#header");
-                toastr.success("Logout thành công");
+                const confirm = window.confirm("You want to sign out ?");
+                if (confirm) {
+                    localStorage.removeItem("user");
+                    reRender(Header, "#header");
+                    toastr.success("Logout thành công");
+                }
             });
         }
     },

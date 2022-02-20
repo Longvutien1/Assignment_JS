@@ -1,12 +1,33 @@
-import { getProductById } from "../api/products";
+// eslint-disable-next-line import/no-unresolved
+import Swiper from "swiper/bundle";
+// eslint-disable-next-line import/no-unresolved
+import "swiper/css/bundle";
+import toastr from "toastr";
+import { getProductById, update } from "../api/products";
 import Footer from "../component/footer";
 import Header from "../component/header";
 import ListProduct from "../component/listProduct";
+import { addToCart } from "../utils/cart";
+import "toastr/build/toastr.min.css";
+import { reRender } from "../utils";
 
 const DetailProduct = {
     async render(id) {
         const found = await getProductById(id);
         const { data } = found;
+
+        // call api ++ view
+        update({
+            id,
+            productName: data.productName,
+            img: data.img,
+            price: data.price,
+            quantity: data.quantity,
+            description: data.description,
+            view: data.view ? data.view + 1 : 1,
+        }).then(() => {
+            reRender(DetailProduct, "#app");
+        });
         console.log(data);
         return /* html */ `
             ${Header.render()}
@@ -14,7 +35,7 @@ const DetailProduct = {
             <div class="image-detail">
     
                <div class="">
-                  <img src="../${data.img}" alt="" width="350" id="main_img">
+                  <img src="${data.img}" alt="" width="350" id="main_img">
                </div>
     
                 <div class="mini">
@@ -27,7 +48,7 @@ const DetailProduct = {
     
             <div class="product-information">
                 
-                <h1 class="text-4xl">${data.title}</h1>
+                <h1 class="text-4xl">${data.productName}</h1>
                 <div class="stars">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -37,21 +58,21 @@ const DetailProduct = {
                 </div>
 
                 <p class ="mt-8 ">Be the first to review this product</p>
-                <p class="price_now  ">${data.price_now} <span class="price_old">${data.price_old}</span></p>
+                <p class="price_now">${data.price} <span class="price_old">${data.price}</span></p>
                 <p class="font-bold  ">QUICK OVERVIEW</p>
                 <p class=" text-sm mt-1 ">Ut metus. Maecenas dapibus nibh eu est. Proin faucibus pharetra nibh. Integer aliquet tellus in felis. Quisque mi pede, imperdiet a, dapibus vel, bibendum rhoncus, nulla. Sed eu velit. Maecenas molestie, ipsum nec nonummy mattis, ipsum lectus imperdiet nibh</p>
 
                 <div class="quantity">
 
                     <span>Quantity: </span>
-                    <input type="number" name="" id="" min="0" max="100">
+                    <input type="number"  name="" id="quantityProduct" min="0" max="100">
 
                 </div>
 
                 <div class="buttons">
-                <a href="#" class="buy">buy now</a>
-                <a href="#" class="cart">add to cart</a>
-            </div>
+                    <a href="#" class="buy">buy now</a>
+                   <a data-id="${data.id}" class="cart"  id="btnAddToCart" >add to cart</a>
+                </div>
             </div>
         </section>
         
@@ -184,6 +205,7 @@ const DetailProduct = {
             };
         }
 
+        // eslint-disable-next-line no-unused-vars
         const swiper2 = new Swiper(".featured-slider", {
             spaceBetween: 10,
             loop: true,
@@ -235,6 +257,24 @@ const DetailProduct = {
                 close.classList.remove("active");
                 preveiwContainer.style.display = "none";
             };
+        });
+
+        // add to cart
+        const btnAddToCart = document.querySelector("#btnAddToCart");
+        const { id } = btnAddToCart.dataset;
+        console.log(id);
+        const quantityProduct = document.querySelector("#quantityProduct");
+
+        btnAddToCart.addEventListener("click", async () => {
+            console.log(quantityProduct.value);
+            const { data } = await getProductById(id);
+            console.log(data);
+            // add sp vao cart quantity mặc định = 1
+            // eslint-disable-next-line max-len
+            addToCart({ ...data, quantity: quantityProduct.value ? quantityProduct.value : 1 }, () => {
+                toastr.success(`Thêm thành công ${quantityProduct.value} sản phẩm vào giỏ hàng`);
+                reRender(Header, "header");
+            });
         });
     },
 };

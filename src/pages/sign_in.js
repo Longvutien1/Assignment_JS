@@ -7,7 +7,7 @@ const SignIn = {
         return /* html */`
              
                <!-- login form -->
-              <div class="login-form-container">
+              <div class="login-form-container" >
 
                   <form action="" id="formSignIn">
                       <h3>Sign In</h3>
