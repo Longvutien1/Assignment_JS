@@ -1,6 +1,15 @@
+// eslint-disable-next-line import/no-unresolved
+import Swiper from "swiper/bundle";
+// eslint-disable-next-line import/no-unresolved
+import "swiper/css/bundle";
+import toastr from "toastr";
+import { getProductById } from "../api/products";
 import Footer from "../component/footer";
 import Header from "../component/header";
 import ListProduct from "../component/listProduct";
+import { reRender } from "../utils";
+import { addToCart } from "../utils/cart";
+import "toastr/build/toastr.min.css";
 
 const HomePage = {
     async render() {
@@ -278,6 +287,7 @@ const HomePage = {
             searchForm.classList.toggle("active");
         };
 
+        // eslint-disable-next-line no-unused-vars
         const swiper = new Swiper(".books-slider", {
             loop: true,
 
@@ -301,6 +311,7 @@ const HomePage = {
         });
         // Sswiper.onload();
 
+        // eslint-disable-next-line no-unused-vars
         const swiper2 = new Swiper(".featured-slider", {
             spaceBetween: 10,
             loop: true,
@@ -328,7 +339,7 @@ const HomePage = {
                 },
             },
         });
-
+        // eslint-disable-next-line no-unused-vars
         const swiper3 = new Swiper(".arrivals-slider", {
             spaceBetween: 10,
             loop: true,
@@ -349,7 +360,7 @@ const HomePage = {
                 },
             },
         });
-
+        // eslint-disable-next-line no-unused-vars
         const swiper4 = new Swiper(".reviews-slider", {
             spaceBetween: 10,
             grabCursor: true,
@@ -371,7 +382,7 @@ const HomePage = {
                 },
             },
         });
-
+        // eslint-disable-next-line no-unused-vars
         const swiper5 = new Swiper(".blogs-slider", {
             spaceBetween: 10,
             grabCursor: true,
@@ -417,6 +428,27 @@ const HomePage = {
                 close.classList.remove("active");
                 preveiwContainer.style.display = "none";
             };
+        });
+
+        // add to cart
+        const btnAddToCart = document.querySelectorAll("#btnAddToCart");
+
+        btnAddToCart.forEach(async (e) => {
+            // const { id } = btnAddToCart.dataset;
+            const { id } = e.dataset;
+            console.log(id);
+
+            await e.addEventListener("click", async () => {
+                console.log(1212);
+                const { data } = await getProductById(id);
+                console.log(data);
+                // add sp vao cart quantity mặc định = 1
+                // eslint-disable-next-line max-len
+                addToCart({ ...data, quantity: 1 }, () => {
+                    toastr.success("Thêm thành công 1 sản phẩm vào giỏ hàng");
+                    reRender(Header, "header");
+                });
+            });
         });
     },
 

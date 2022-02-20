@@ -369,9 +369,16 @@ section{
 }
 
 .featured .featured-slider .box .content .price{
-  @apply text-lg  font-bold;
+  @apply text-lg  font-bold my-2;
 
   color:var(--black);
+}
+.featured .featured-slider .box .content .btn{
+  @apply text-lg  px-4 py-1 text-white;
+  border: 1px solid var(--green);
+  
+  background: var(--green);
+  border-radius: 8px
 }
 
 .featured .featured-slider .box .content .price span{
@@ -676,6 +683,7 @@ section{
 .blogs .blogs-slider .box .content .btn{
   @apply text-base;
   border-radius: 5px;
+  
 }
 
 /* -----------------footer------------------- */
@@ -715,6 +723,7 @@ section{
   background: var(--green);
   border-radius: 50%;
   line-height: 3rem;
+  
 }
 
 .footer .share a:hover{

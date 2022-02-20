@@ -1,15 +1,18 @@
 import axios from "axios";
-import { getProductById, update } from "../../../api/products";
+import $ from "jquery";
+// eslint-disable-next-line no-unused-vars
+import validate from "jquery-validation";
+import { getUserById, updateUser } from "../../../api/users";
 import NavAdmin from "../../../component/NavAdmin";
 import { reRender } from "../../../utils";
-import adminList from "./list";
+import adminListUser from "./list";
 
-const adminUpdate = {
+const adminUpdateUser = {
     async render(id) {
     // console.log(id);
-        const { data } = await getProductById(id);
+        const { data } = await getUserById(id);
 
-        // console.log(data);
+        console.log(data);
         return /* html */ `
       
         
@@ -107,45 +110,69 @@ const adminUpdate = {
                          
                         <div >
                               <label for="about" class="block text-sm font-medium text-gray-700"  >
-                                  Product Name
+                                  FULL NAME
                               </label>
-                              <input type="text" name="company-website" id="name-product" class="shadow-sm border-solid px-2 py-1 w-full mt-1 border focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="Product Name" value="${data.productName}">
+                              <input type="text" name="fullname" id="fullname" class="shadow-sm border-solid px-2 py-1 w-full mt-1 border focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="Product Name" value="${data.fullname}">
                 
                         </div>
                       
                         <div>
                           <label for="about" class="block text-sm font-medium text-gray-700" >
-                            Product Price
+                              USER NAME
                           </label>
-                          <input type="number" name="company-website" id="price-product" class="shadow-sm border-solid px-2 py-1 w-full mt-1 border focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="Product Price" value="${data.price}">
+                          <input type="text" name="username" id="username" class="shadow-sm border-solid px-2 py-1 w-full mt-1 border focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="User name" value="${data.email}">
                         
                         </div>
 
                         <div >
                             <label for="about" class="block text-sm font-medium text-gray-700"  >
-                                Product Quantity
+                                PASSWORD
                             </label>
-                            <input type="number" name="company-website" id="quantity-product" class="shadow-sm border-solid px-2 py-1 w-full mt-1 border focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="Quantity Product" value="${data.quantity}">
+                            <input type="password" name="password" id="password" class="shadow-sm border-solid px-2 py-1 w-full mt-1 border focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="Password" value="${data.password}">
               
                         </div>
 
-                        <div>
-                          <label for="about" class="block text-sm font-medium text-gray-700">
-                            Description
-                          </label>
-                          <div class="mt-1">
-                            <textarea id="description-product" name="about" rows="3" class="border-solid px-2 py-1 w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Description" >${data.description}</textarea>
-                          </div>
-                        
+                        <div >
+                            <label for="about" class="block text-sm font-medium text-gray-700"  >
+                                PHONE
+                            </label>
+                            <input type="text" name="phone" id="phone" class="shadow-sm border-solid px-2 py-1 w-full mt-1 border focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="Phone" value="${data.phone}">
+              
                         </div>
-    
+
+                        <div >
+                            <label for="about" class="block text-sm font-medium text-gray-700"  >
+                                ADDRESS
+                            </label>
+                            <input type="text" name="address" id="address" class="shadow-sm border-solid px-2 py-1 w-full mt-1 border focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="Address" value="${data.address}">
+              
+                        </div>
+
+                          <div class="mt-1 flex gap-4">
+                          <div class=" flex gap-1">
+                            <input type="radio" name="role" id="role" class="my-auto " placeholder="Role"  value="Male" ${data.role === "Male" ? "checked = `checked`" : ""} >
+                            <label for="company-website" class="block text-sm font-medium text-gray-700 ">
+                              Male
+                            </label>
+                          
+                          </div>
+
+                          <div class=" flex gap-1">
+                            <input type="radio" name="role" id="role" class="my-auto " placeholder="Role" value="Female" ${data.role === "Female" ? "checked = `checked`" : ""} >
+                            <label for="Nữ" class="block text-sm font-medium text-gray-700 ">
+                              Female
+                            </label>
+                          
+                          </div>
+                        </div>
+
                           <div>
                             <label class="block text-sm font-medium text-gray-700">
                               Photo
                             </label>
                             <div class="mt-1 flex items-center">
                               <span class="inline-block h-36 w-36 rounded-full overflow-hidden bg-gray-100">
-                                <img id="img-preview" src="${data.img}" alt="" >
+                                <img id="img-preview" src="${data.img}" alt="">
                               </span>
                             
                             </div>
@@ -192,7 +219,7 @@ const adminUpdate = {
 
     afterRender(id) {
         // console.log(id);
-        const formEdit = document.querySelector("#form-edit");
+        const formEdit = $("#form-edit");
         const CLOUDINARY_PRESET = "longchanhthon";
         const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/chanh-thon/image/upload";
         const imgPreview = document.querySelector("#img-preview");
@@ -200,59 +227,114 @@ const adminUpdate = {
         // eslint-disable-next-line no-unused-vars
         let imgLink = "";
 
-        imgPost.addEventListener("change", async (e) => {
+        imgPost.addEventListener("change", (e) => {
             // handle sự kiện change để xem ảnh trên local
             imgPreview.src = URL.createObjectURL(e.target.files[0]);
         });
 
-        formEdit.addEventListener("submit", async (a) => {
-            a.preventDefault();
-            const file = imgPost.files[0];
+        formEdit.validate({
+            rules: {
+                fullname: {
+                    required: true,
+                    minlength: 6,
+                },
+                username: {
+                    required: true,
+                    minlength: 6,
+                },
+                password: {
+                    required: true,
+                    minlength: 6,
+                },
 
-            // console.log(`old: ${imgOld.src}`);
-            if (file) {
-                const formData = new FormData();
-                formData.append("file", file);
-                formData.append("upload_preset", CLOUDINARY_PRESET);
-                // call api cloudinary để up ảnh lên
-                const { data } = await axios.post(CLOUDINARY_API_URL, formData, {
-                    headers: {
-                        "Content-Type": "application/form-data",
-                    },
-                });
-                imgLink = data.url;
-            }
+                address: {
+                    required: true,
+                    minlength: 6,
+                },
+                phone: {
+                    required: true,
+                    minlength: 10,
+                },
+                role: {
+                    required: "#role:checked",
+                    minlength: 1,
+                },
 
-            const productName = document.querySelector("#name-product");
-            const price = document.querySelector("#price-product");
-            const quantity = document.querySelector("#quantity-product");
-            const description = document.querySelector("#description-product");
+            },
+            messages: {
+                fullname: {
+                    required: "This Field Is Required. ",
+                    minlength: "At least more than 6 characters ",
+                },
+                username: {
+                    required: "This Field Is Required. ",
+                    minlength: "At least more than 6 characters ",
+                },
+                password: {
+                    required: "This Field Is Required. ",
+                    minlength: "At least more than 6 characters ",
+                },
+                address: {
+                    required: "This Field Is Required. ",
+                    minlength: "At least more than 6 characters ",
+                },
+                phone: {
+                    required: "This Field Is Required. ",
+                    minlength: "At least more than 6 characters ",
+                },
+                role: {
+                    required: "This Field Is Required. ",
+                    minlength: "At least more than 6 characters ",
+                },
 
-            if (productName.value === "") {
-                productName.focus();
-            } else if (price.value === "") {
-                price.focus();
-            } else if (quantity.value === "") {
-                quantity.focus();
-            } else if (description.value === "") {
-                description.focus();
-            } else {
-                const { data } = await getProductById(id);
-                // call api thêm bai viết
-                update({
-                    id,
-                    productName: productName.value,
-                    img: imgLink || imgPreview.src,
-                    price: price.value,
-                    quantity: quantity.value,
-                    description: description.value,
-                    view: data.view,
+            },
+            submitHandler: () => {
+                async function handleAddpost() {
+                    const file = imgPost.files[0];
+                    if (file) {
+                        const formData = new FormData();
+                        formData.append("file", file);
+                        formData.append("upload_preset", CLOUDINARY_PRESET);
+                        // call api cloudinary để up ảnh lên
+                        const { data } = await axios.post(CLOUDINARY_API_URL, formData, {
+                            headers: {
+                                "Content-Type": "application/form-data",
+                            },
+                        });
+                        imgLink = data.url;
+                    }
+                    let role = document.querySelectorAll("#role");
+                    // let aanb;
+                    // console.log(role.value);
 
-                }).then(() => {
-                    alert("Update Successfully");
-                    reRender(adminList, "#app");
-                });
-            }
+                    role.forEach((e) => {
+                        if (e.checked === true) {
+                            role = e.value;
+                        }
+                    });
+
+                    console.log(role);
+                    // console.log(roleOld.data.role);
+                    // const a = role || roleOld;
+                    // call api thêm bai viết
+                    updateUser({
+                        id,
+                        fullname: document.querySelector("#fullname").value,
+
+                        img: imgLink || imgPreview.src,
+                        email: document.querySelector("#username").value,
+                        password: document.querySelector("#password").value,
+                        phone: document.querySelector("#phone").value,
+                        address: document.querySelector("#address").value,
+                        role,
+
+                    }).then(() => {
+                        alert("Update Successfully");
+                        reRender(adminListUser, "#app");
+                    });
+                }
+                handleAddpost();
+            },
         });
 
         // menu2
@@ -293,4 +375,4 @@ const adminUpdate = {
     },
 };
 
-export default adminUpdate;
+export default adminUpdateUser;
