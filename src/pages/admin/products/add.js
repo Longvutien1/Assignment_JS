@@ -4,6 +4,7 @@ import $ from "jquery";
 import validate from "jquery-validation";
 
 import { add } from "../../../api/products";
+import ListProduct from "../../../component/listProduct";
 import NavAdmin from "../../../component/NavAdmin";
 import { reRender } from "../../../utils";
 
@@ -136,6 +137,12 @@ const adminNewAdd = {
                           <div class="mt-1">
                             <textarea id="description-product" name="description-product" rows="3" class="border-solid px-2 py-1 w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Description"></textarea>
                           </div>
+                        
+                        </div>
+                        <div>
+                          <select id="categoryId" class="border border-solid">
+                            ${await ListProduct.listCategoriesAdminAddProduct()}
+                          </select>
                         
                         </div>
                   
@@ -299,6 +306,7 @@ const adminNewAdd = {
                         price: document.querySelector("#price-product").value,
                         quantity: document.querySelector("#quantity-product").value,
                         description: document.querySelector("#description-product").value,
+                        categoryId: document.querySelector("#categoryId").value,
                         view: 0,
                     }).then(() => {
                         alert("Add Successfully");
