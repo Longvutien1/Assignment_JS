@@ -1,6 +1,6 @@
 // import NavAdmin from "../../component/NavAdmin";
-
-import { remove } from "../../api/products";
+import $ from "jquery";
+import { getAllProduct, remove } from "../../api/products";
 import ListProduct from "../../component/listProduct";
 import NavAdmin from "../../component/NavAdmin";
 import { reRender } from "../../utils";
@@ -102,6 +102,24 @@ const DashBoardPage = {
                     </div>
                 
                     <div class="flex flex-col mt-4">
+                        <div class="page my-8">
+                            <ul>
+                                <li class="btn-prev btn-active fas fa-angle-left"></li>
+                                <div class="number-page" id="number-page">
+                                
+                                    <!-- <li class="active">
+                                    <a>1</a>
+                                    </li>
+                                    <li>
+                                        <a>2</a>
+                                    </li>
+                                    <li>
+                                        <a>3</a>
+                                    </li> -->
+                                </div>
+                                <li class="btn-next fas fa-angle-right"></li>
+                            </ul>
+                        </div>
                         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -138,7 +156,9 @@ const DashBoardPage = {
                                 </tr>
                                 </thead>
                 
-                                ${await ListProduct.listProductAdmin()}
+                                <tbody class="bg-white divide-y divide-gray-200" id="product">
+                                    ${await ListProduct.listProductAdmin(1)}
+                                </tbody>
                 
                 
                             </table>
@@ -151,7 +171,7 @@ const DashBoardPage = {
 
                     `;
     },
-    afterRender() {
+    async afterRender() {
         // const open = document.querySelector("#openNav");
         // open.addEventListener("click", () => {
         //     document.getElementById("main").style.marginLeft = "20%";
@@ -226,6 +246,100 @@ const DashBoardPage = {
                 }
             });
         });
+
+        // phân trang
+
+        const { data } = await getAllProduct();
+        const totalPages = Math.ceil(data.length / 5);
+        console.log(totalPages);
+        // console.log(totalPages);
+        let html = "";
+        html += `<li class="current-page active"><a>${1}</a></li>`;
+        // eslint-disable-next-line no-plusplus
+        for (let i = 2; i <= totalPages; i++) {
+            html += `<li><a>${i}</a></li>`;
+        }
+        if (totalPages === 0) {
+            html = "";
+        }
+        document.getElementById("number-page").innerHTML = html;
+
+        //
+        const idPages = document.querySelectorAll(".number-page li");
+        // const a = document.querySelectorAll(".number-page li a");
+        // eslint-disable-next-line no-plusplus
+        for (let i = 0; i < idPages.length; i++) {
+            // eslint-disable-next-line no-loop-func
+            idPages[i].onclick = async function () {
+                const value = i + 1;
+                const current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace("active", "");
+                this.classList.add("active");
+                if (value > 1 && value < idPages.length) {
+                    $(".btn-prev").removeClass("btn-active");
+                    $(".btn-next").removeClass("btn-active");
+                }
+                if (value === 1) {
+                    $(".btn-prev").addClass("btn-active");
+                    $(".btn-next").removeClass("btn-active");
+                }
+                if (value === idPages.length) {
+                    $(".btn-next").addClass("btn-active");
+                    $(".btn-prev").removeClass("btn-active");
+                }
+                if (value) {
+                    const product2 = document.querySelector("#product");
+                    product2.innerHTML = await ListProduct.listProductAdmin(value);
+                    // console.log(value);
+                }
+            };
+        }
+        let idPage = 1;
+        $(".btn-next").on("click", async () => {
+            // eslint-disable-next-line no-plusplus
+            idPage++;
+            if (idPage > totalPages) {
+                idPage = totalPages;
+            }
+            if (idPage === totalPages) {
+                $(".btn-next").addClass("btn-active");
+            } else {
+                $(".btn-next").removeClass("btn-active");
+            }
+
+            const btnPrev = document.querySelector(".btn-prev");
+            btnPrev.classList.remove("btn-active");
+            $(".number-page li").removeClass("active");
+            $(`.number-page li:eq(${idPage - 1})`).addClass("active");
+            if (idPage) {
+                const product2 = document.querySelector("#product");
+                product2.innerHTML = await ListProduct.listProductAdmin(idPage);
+                // console.log(idPage);
+            }
+        });
+
+        $(".btn-prev").on("click", async () => {
+            // eslint-disable-next-line no-plusplus
+            idPage--;
+            if (idPage <= 0) {
+                idPage = 1;
+            }
+            if (idPage === 1) {
+                $(".btn-prev").addClass("btn-active");
+            } else {
+                $(".btn-prev").removeClass("btn-active");
+            }
+            const btnNext = document.querySelector(".btn-next");
+            btnNext.classList.remove("btn-active");
+            $(".number-page li").removeClass("active");
+            $(`.number-page li:eq(${idPage - 1})`).addClass("active");
+            if (idPage) {
+                const product2 = document.querySelector("#product");
+                product2.innerHTML = await ListProduct.listProductAdmin(idPage);
+                console.log(idPage);
+            }
+        });
+        // console.log(idPage);
     },
 };
 

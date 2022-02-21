@@ -393,6 +393,16 @@ const ListProduct = {
     ).join("")}
         `;
     },
+    async listCategoriesAdminAddProduct() {
+        const { data } = await getAllCategories();
+        return /* html */ `
+            ${data.map(
+        (item) => `
+        <option value="${item.id}">${item.nameCategories}</option>
+            `,
+    ).join("")}
+        `;
+    },
 
     async listProductTopViewShop() {
         const { data } = await sortProductByView();

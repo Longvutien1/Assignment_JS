@@ -101,23 +101,23 @@ const adminList = {
 
          <div class="flex flex-col mt-4">
             <div class="page my-8">
-            <ul>
-                <li class="btn-prev btn-active fas fa-angle-left"></li>
-                <div class="number-page" id="number-page">
-                
-                    <!-- <li class="active">
-                    <a>1</a>
-                    </li>
-                    <li>
-                        <a>2</a>
-                    </li>
-                    <li>
-                        <a>3</a>
-                    </li> -->
-                </div>
-                <li class="btn-next fas fa-angle-right"></li>
-            </ul>
-        </div>
+                <ul>
+                    <li class="btn-prev btn-active fas fa-angle-left"></li>
+                    <div class="number-page" id="number-page">
+                    
+                        <!-- <li class="active">
+                        <a>1</a>
+                        </li>
+                        <li>
+                            <a>2</a>
+                        </li>
+                        <li>
+                            <a>3</a>
+                        </li> -->
+                    </div>
+                    <li class="btn-next fas fa-angle-right"></li>
+                </ul>
+            </div>
          <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
              <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
              <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">

@@ -39,7 +39,7 @@ const Header = {
                     <!-- <a href="/#/admin">admin</a>-->
                    
                     <!-- nếu đã đăng nhập = user admin thì hiện admin -->
-                    ${JSON.parse(localStorage.getItem("user")).user.id === 35 ? `
+                    ${JSON.parse(localStorage.getItem("user")) ? `
                 
                     <a href="/#/admin" >admin</a>
 
