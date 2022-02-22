@@ -40,7 +40,7 @@ const Shop = {
           </ul>
     
           <ul>
-            <li class="border text-white pl-4 text-xl py-2 mt-8" style="background-color: #27ae60;color: #fff;">SẢN PHẨM ĐƯỢC YÊU THÍCH</li>
+            <li class="border text-white pl-4 text-xl py-2 mt-8" style="background-color: #27ae60;color: #fff;">FAVORITE PRODUCTS</li>
                 
                 ${await ListProduct.listProductTopViewShop()}
             <li class="border px-4  py-2" style="background-color: #27ae60;">

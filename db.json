@@ -439,7 +439,7 @@
       "price": "12",
       "quantity": "11",
       "description": "sdffsf",
-      "view": 0
+      "view": 2
     }
   ],
   "categories": [
@@ -849,6 +849,25 @@
       },
       "time": "15:24:26",
       "id": 15
+    },
+    {
+      "content": "Đẹp ",
+      "product": {
+        "id": 40,
+        "productName": "Nguyễn Minh Đức",
+        "img": "http://res.cloudinary.com/chanh-thon/image/upload/v1645516996/upload_preset/xnrfavo04zowca8e5alt.png",
+        "price": "12",
+        "quantity": "11",
+        "description": "sdffsf",
+        "view": 0
+      },
+      "user": {
+        "email": "admin@gmail.com",
+        "username": "Long Chanh thôn",
+        "id": 35
+      },
+      "time": "15:53:18",
+      "id": 16
     }
   ]
 }
