@@ -28,7 +28,7 @@ const Header = {
             </div>
 
             </div>
-            <div class="header-2">
+            <div class="header-2 ">
                 <nav class="navbar2">
                     <a href="/#/">Home page</a>
                     <a href="/#/shop">Shop</a>
@@ -54,7 +54,7 @@ const Header = {
                 </nav>
                
                 
-              
+            
             </div>
         </header>
 

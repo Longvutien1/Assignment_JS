@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
 import Swiper from "swiper/bundle";
+
 // eslint-disable-next-line import/no-unresolved
 import "swiper/css/bundle";
 import toastr from "toastr";
@@ -9,27 +10,17 @@ import Header from "../component/header";
 import ListProduct from "../component/listProduct";
 import { addToCart } from "../utils/cart";
 import "toastr/build/toastr.min.css";
-import { reRender } from "../utils";
+import { reRender, reRender2 } from "../utils";
+import { addComment } from "../api/comment";
 
 const DetailProduct = {
     async render(id) {
-        const found = await getProductById(id);
-        const { data } = found;
+        const { data } = await getProductById(id);
+        // console.log(data);
 
-        // call api ++ view
-        update({
-            id,
-            productName: data.productName,
-            img: data.img,
-            price: data.price,
-            quantity: data.quantity,
-            description: data.description,
-            view: data.view ? data.view + 1 : 1,
-        }).then(() => {
-            reRender(DetailProduct, "#app");
-        });
         console.log(data);
         return /* html */ `
+          
             ${Header.render()}
             <section class="container_detail ">
             <div class="image-detail">
@@ -83,87 +74,18 @@ const DetailProduct = {
 
         <h1 class="heading"> <span>Review</span></h1>
 
-            <div class="content">
+            ${await ListProduct.listCommentByIdProduct(id)}
 
-                <div class="info">
-
-                    <a href=""><img src="../image/pic-2.png" alt="" width="40"></a>
-
-                    <div>
-
-                        <p>Vũ Tiến Long</p>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="content-comment">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis fugiat placeat quis, illum earum accusamus necessitatibus autem nobis molestiae cumque amet adipisci consectetur consequuntur ea nulla reprehenderit, id at tenetur.</p>
-
-                </div>
-
-            </div>
-
-            <div class="content">
-
-                <div class="info">
-
-                    <a href=""><img src="../image/pic-2.png" alt="" width="40"></a>
-
-                    <div>
-
-                        <p>Vũ Hoàng Đức</p>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="content-comment">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis fugiat placeat quis, illum earum accusamus necessitatibus autem nobis molestiae cumque amet adipisci consectetur consequuntur ea nulla reprehenderit, id at tenetur.</p>
-
-                </div>
-
-            </div>
-
-            <div class="content">
-
-                <div class="info">
-
-                    <a href=""><img src="../image/pic-2.png" alt="" width="40"></a>
-
-                    <div>
-
-                        <p>Vũ Tiến Minh 2</p>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="content-comment">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis fugiat placeat quis, illum earum accusamus necessitatibus autem nobis molestiae cumque amet adipisci consectetur consequuntur ea nulla reprehenderit, id at tenetur.</p>
-                </div>
-
+           
+                ${JSON.parse(localStorage.getItem("user")) ? `
+                <form  id="formComment"  style="border: 1px solid #E8E8E8; background-color: #E8E8E8; padding: 5px 10px;">
+                
+                <input type="text" name="commentInput" id="commentInput" class="shadow-sm border-solid px-2 py-1 w-full mt-1 border focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="Comment's here">
+                </form>
+                ` : `
+                    <p style="color: red;background:#ddd; padding:5px 10px" >Đăng nhập để bình luận về sản phẩm này</p>
+                `}
+            
             </div>
 
         </section>
@@ -194,7 +116,20 @@ const DetailProduct = {
         `;
     },
 
-    async afterRender() {
+    async afterRender(id) {
+        const { data } = await getProductById(id);
+        // call api ++ view
+        // console.log(id);
+        await update({
+            id,
+            productName: data.productName,
+            img: data.img,
+            price: data.price,
+            quantity: data.quantity,
+            description: data.description,
+            view: data.view ? data.view + 1 : 1,
+        });
+
         const mainImg = document.getElementById("main_img");
         const smallImg = document.getElementsByClassName("small-img");
 
@@ -261,21 +196,43 @@ const DetailProduct = {
 
         // add to cart
         const btnAddToCart = document.querySelector("#btnAddToCart");
-        const { id } = btnAddToCart.dataset;
+        const idAddtocart = btnAddToCart.dataset.id;
         console.log(id);
         const quantityProduct = document.querySelector("#quantityProduct");
 
         btnAddToCart.addEventListener("click", async () => {
             console.log(quantityProduct.value);
-            const { data } = await getProductById(id);
-            console.log(data);
+            const dataAddtoCart = await getProductById(idAddtocart).data;
+            console.log(dataAddtoCart);
             // add sp vao cart quantity mặc định = 1
             // eslint-disable-next-line max-len
-            addToCart({ ...data, quantity: quantityProduct.value ? quantityProduct.value : 1 }, () => {
+            addToCart({ ...dataAddtoCart, quantity: quantityProduct.value ? quantityProduct.value : 1 }, () => {
                 toastr.success(`Thêm thành công ${quantityProduct.value} sản phẩm vào giỏ hàng`);
                 reRender(Header, "header");
             });
         });
+
+        if (JSON.parse(localStorage.getItem("user"))) {
+            // const formComment = $("#formComment");
+            const formComment = document.querySelector("#formComment");
+
+            formComment.addEventListener("submit", async (e) => {
+                e.preventDefault();
+
+                const today = new Date();
+                const time = `${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`;
+                addComment({
+                    content: document.querySelector("#commentInput").value,
+                    product: data,
+                    user: JSON.parse(localStorage.getItem("user")).user,
+                    time,
+                }).then(async () => {
+                    alert("Update Successfully");
+                    console.log(id);
+                    await reRender2(DetailProduct, id, "#app");
+                });
+            });
+        }
     },
 };
 

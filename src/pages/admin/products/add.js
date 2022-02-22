@@ -286,6 +286,7 @@ const adminNewAdd = {
                 },
             },
             submitHandler: () => {
+                console.log(document.querySelector("#categoryId").value);
                 async function handleAddpost() {
                     const file = imgPost.files[0];
                     if (file) {
