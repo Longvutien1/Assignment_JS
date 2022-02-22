@@ -87,13 +87,13 @@ const HomePage = {
 
             <!-- featured section starts  -->
 
-            <section class="featured" id="featured">
+            <section class="featured" id="featured" >
 
                 <h1 class="heading"> <span>featured books</span></h1>
         
-                <div class="swiper featured-slider z-0">
+                <div class="swiper featured-slider " style="z-index:0">
                     
-                    <div class="swiper-wrapper products-container ">
+                    <div class="swiper-wrapper products-container" >
         
                         ${await ListProduct.render()}
                         

@@ -79,7 +79,7 @@
 
 
 .cart .container-cart .order {
-    @apply col-span-5 p-8 h-80;
+    @apply col-span-5 p-8 h-full;
     background: #F8F9FA;
     border-radius: 10px
     
@@ -100,3 +100,98 @@
     @apply w-full py-2 text-white;
     border-radius: 8px;
 }
+
+
+.formThanhToan{
+    @apply fixed top-0 hidden left-0 w-full  items-center justify-center;
+    min-height: 100vh;
+    background: rgba(0,0,0,.8);
+  
+  }
+  .formThanhToan.active{
+    display: inline-block;
+  
+  }
+  .formThanhToan .preview{
+    @apply  p-6 text-left hidden  bg-white relative m-auto  z-50;
+    width: 27%;
+    transform: translateY(15%);
+  }
+  
+  .formThanhToan.active .preview{
+    display: block;
+    
+  }
+  
+  .formThanhToan .preview input{
+    border: 1px solid #219150;
+    @apply w-full px-2 py-1 rounded-md;
+    margin: 5px 0;
+  }
+  
+  .formThanhToan .preview .fa-times{
+    @apply absolute top-4 right-6 cursor-pointer text-3xl;
+  
+    color:var(--green);
+   
+  }
+  
+  .formThanhToan .preview .fa-times:hover{
+    transform: rotate(90deg);
+  }
+  
+  .formThanhToan .preview h3{
+    @apply text-2xl py-2;
+    color:var(--black);
+   
+  }
+  
+  
+  .formThanhToan .preview p{
+    @apply mt-2 text-base text-left;
+    line-height: 1.5;
+    color:var(--line-color);
+  }
+  
+  .formThanhToan .preview .price{
+    @apply py-2 text-2xl;
+    color:var(--green);
+  }
+  
+  .formThanhToan .preview .buttons{
+    @apply flex gap-4 flex-wrap mt-4;
+  
+  }
+  
+  .formThanhToan .preview .buttons button{
+    @apply p-2.5 text-base ;
+    flex:1 1;
+    color:#444;
+    
+  }
+  
+  .formThanhToan .preview .buttons button.cart{
+    border:.05rem solid var(--dark-color);
+    background: var(--green);
+    color:#fff;
+  }
+  
+  .formThanhToan .preview .buttons button.buy{
+    border:.05rem solid var(--black);
+   
+    color:var(--black);
+   
+  }
+  
+  .formThanhToan .preview .buttons button.cart:hover{
+    background: var(--dark-color);
+  }
+  
+  .formThanhToan .preview .buttons button.buy:hover{
+    border:.05rem solid  var(--dark-color);
+    background: var(--dark-color);
+    color:#fff;
+  }
+  .error{
+      color: red;
+  }

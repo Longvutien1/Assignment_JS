@@ -6,6 +6,8 @@ import {
 } from "../api/products";
 import { getAllUser } from "../api/users";
 import "toastr/build/toastr.min.css";
+import { getAllOrder, getOrderById } from "../api/order";
+import { getAllComment, getCommentByIdProduct } from "../api/comment";
 
 const ListProduct = {
     async render() {
@@ -291,6 +293,104 @@ const ListProduct = {
         .join("")}
         `;
     },
+    async listOrdersAdmin() {
+        const { data } = await getAllOrder();
+
+        return /* html */ `
+            ${data
+        .map(
+            (item, index) => `
+           
+                    
+                        <tr>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="flex items-center">
+                            <div class="flex-shrink-0 h-10 w-10">
+                            <div class="text-sm text-gray-900">${index + 1}</div>
+                        
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-500">
+                           ${item.userInformation.fullname}
+                        </td>
+                    
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"> ${item.userInformation.phone} </td>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            ${item.userInformation.address}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        ${item.userInformation.noiNhan}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 ">
+                             <div id="statusListOrder" data-id2="${item.userInformation.status}"  class=" text-center px-2 py-1 rounded-md "></div>
+                        </td>
+                           
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                            <a href="/admin/orders/edit/${item.id}" class="text-yellow-500  hover:text-indigo-900"><i class="bx bxs-edit-alt text-3xl p-2"></i>   </a>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
+                        
+                            <button data-id="${item.id}" class="btn text-red-600"><i class="bx bxs-trash text-3xl p-2"></i> </button>
+                        </td>
+                           
+                        </tr>
+        
+                        <!-- More people... -->
+                  
+               
+            `,
+        )
+        .join("")}
+        
+        `;
+    },
+
+    async listCommentAdmin(page) {
+        const { data } = await getAllComment(page);
+        console.log(data);
+        return /* html */ `
+            ${data
+        .map(
+            (item, index) => `
+           
+                    
+                        <tr>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="flex items-center">
+                            <div class="flex-shrink-0 h-10 w-10">
+                            <div class="text-sm text-gray-900">${index + 1}</div>
+                        
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div><img src="${item.product.img}" alt="" width="120"></div>
+                        </td>
+                    
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"> ${item.content} </td>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            ${item.user.username}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        ${item.product.productName}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        ${item.time}
+                        </td>
+                      
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        
+                            <button data-id="${item.id}" class="btn text-red-600"><i class="bx bxs-trash text-3xl p-2"></i> </button>
+                        </td>
+                        </tr>
+        
+                        <!-- More people... -->
+                  
+               
+            `,
+        )
+        .join("")}
+        `;
+    },
 
     async listUserAdmin() {
         const { data } = await getAllUser();
@@ -531,6 +631,83 @@ const ListProduct = {
                 </div>
 
             
+        `,
+        )
+        .join("")}
+    `;
+    },
+
+    async listProductInCart() {
+        let cart = [];
+        if (localStorage.getItem("cart")) {
+            cart = JSON.parse(localStorage.getItem("cart"));
+        }
+        return /* html */ `
+        ${cart.map((item) => `
+            <div class="dl_don_hang" >
+                <p>${item.productName} <span class="text-sm font-semibold pl-4">x<span> ${item.quantity}</p>
+                <p>$${item.price}</p>
+        
+            </div>
+            `).join("")}
+       
+    `;
+    },
+    async listProductInOrderEdit(id) {
+        const { data } = await getOrderById(id);
+        console.log(data.product.listProduct);
+        return /* html */ `
+        ${(data.product.listProduct).map(
+        (item) => `
+            <div class="dl_don_hang" >
+                <p>${item.productName} <span class="text-sm font-semibold pl-4">x<span> ${item.quantity}</p>
+                <p>$${item.price}</p>
+        
+            </div>
+            `,
+    ).join("")}
+       
+    `;
+    },
+
+    async listCommentByIdProduct(id) {
+        const { data } = await getCommentByIdProduct(id);
+        // const { data } = await getAllProduct();
+        console.log(data);
+
+        // console.log(data);
+        return /* html */ `
+        ${data
+        .map(
+            (item) => `
+            <div class="content">
+
+            <div class="info">
+
+                <a href=""><img src="https://res.cloudinary.com/chanh-thon/image/upload/v1645342604/upload_preset/wkbpd6xv38ugjexk6dri.png" alt="" width="40"></a>
+
+                <div>
+
+                    <p>${item.user.username}</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="content-comment flex justify-between">
+            <p style="padding-left:4%">${item.content}</p>
+            <p class="float-right my-auto">${item.time}</p>
+            </div>
+
+        </div>
+    
         `,
         )
         .join("")}

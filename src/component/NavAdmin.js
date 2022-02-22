@@ -106,8 +106,43 @@ const NavAdmin = {
                         </ul>
 
                     </li>
+                    <li class="nav-link">
+                        <a  id="menu-order">
+                            <i class='bx bxl-product-hunt icon'></i>
+                            <span class="text nav-text">Orders</span>
+                            <i class='bx bx-chevron-down icon icon2 '></i>
+                        </a>
+                        
+                        <ul  id="menu2-order" >
+                        
+                            <li  class="nav-link">
+                                <a href="/#/admin/orders/list">
+                                <i class='bx bxl-paypal icon'></i>
+                                <span class=" nav-text">List Orders</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
-                    
+                    <li class="nav-link">
+                        <a  id="menu-comment">
+                        <i class='bx bx-heart icon'></i>
+                            <span class="text nav-text">Comments</span>
+                            <i class='bx bx-chevron-down icon icon2 '></i>
+                        </a>
+                        
+                        <ul  id="menu2-comment" >
+                        
+                            <li  class="nav-link">
+                                <a href="/#/admin/comments/list">
+                                <i class='bx bx-heart icon'></i>
+                                <span class=" nav-text">List Comments</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+              
+
                     <li class="nav-link">
                         <a href="#">
                             <i class='bx bx-bell icon'></i>
@@ -115,27 +150,10 @@ const NavAdmin = {
                         </a>
                     </li>
 
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-pie-chart-alt icon'></i>
-                            <span class="text nav-text">Analytics</span>
-                        </a>
-                    </li>
+                   
 
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-heart icon'></i>
-                            <span class="text nav-text">Likes</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class='bx bx-wallet icon'></i>
-                            <span class="text nav-text">Wallets</span>
-                        </a>
-                    </li>
-
+                    
+        
                 </ul>
             </div>
 
@@ -202,6 +220,16 @@ const NavAdmin = {
         const menu2User = document.querySelector("#menu2-user");
         document.querySelector("#menu-user").addEventListener("click", () => {
             menu2User.classList.toggle("active");
+        });
+
+        const menu2Order = document.querySelector("#menu2-order");
+        document.querySelector("#menu-order").addEventListener("click", () => {
+            menu2Order.classList.toggle("active");
+        });
+
+        const menu2Comment = document.querySelector("#menu2-comment");
+        document.querySelector("#menu-comment").addEventListener("click", () => {
+            menu2Comment.classList.toggle("active");
         });
     },
 };

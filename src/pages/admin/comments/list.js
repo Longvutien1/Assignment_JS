@@ -1,12 +1,13 @@
 import $ from "jquery";
-import { getAllProduct, remove } from "../../../api/products";
+import { getAllComment, removeComment } from "../../../api/comment";
+import { getAllProduct } from "../../../api/products";
 import ListProduct from "../../../component/listProduct";
 import NavAdmin from "../../../component/NavAdmin";
 import { reRender } from "../../../utils";
 
-const adminList = {
+const adminListComments = {
     async render() {
-        const { data } = await getAllProduct();
+        const { data } = await getAllComment();
         console.log(data);
         return /* html */ `
 
@@ -15,7 +16,7 @@ const adminList = {
 
  <section class="home-admin">
        <div class="dashboard py-4 px-4 pb-8" style="background-color: #fff;  border-radius: 10px;">
-           <h1 class=" text-4xl my-4">List Product</h1>
+           <h1 class=" text-4xl my-4">List Comments</h1>
          <div class="grid grid-cols-4 gap-4 mb-8">
            
            <div class="cot1 text-white">
@@ -100,24 +101,7 @@ const adminList = {
          </div>
 
          <div class="flex flex-col mt-4">
-            <div class="page my-8">
-                <ul>
-                    <li class="btn-prev btn-active fas fa-angle-left"></li>
-                    <div class="number-page" id="number-page">
-                    
-                        <!-- <li class="active">
-                        <a>1</a>
-                        </li>
-                        <li>
-                            <a>2</a>
-                        </li>
-                        <li>
-                            <a>3</a>
-                        </li> -->
-                    </div>
-                    <li class="btn-next fas fa-angle-right"></li>
-                </ul>
-            </div>
+           
          <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
              <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
              <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -128,16 +112,19 @@ const adminList = {
                      STT
                  </th>
                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                     IMAGE
+                     IMAGE product
                  </th>
                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                     PRODUCT NAME
+                     Content
                  </th>
                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                     PRICE
+                     User name
                  </th>
                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    QUANTITY
+                    product name
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    time
                 </th>
                  <th colspan="2" scope="col" class="text-center px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                      Status
@@ -148,7 +135,7 @@ const adminList = {
                  </tr>
              </thead>
                     <tbody class="bg-white divide-y divide-gray-200" id="product">
-                        ${await ListProduct.listProductAdmin(1)}
+                        ${await ListProduct.listCommentAdmin()}
                      </tbody>
         
                  </table>
@@ -226,9 +213,9 @@ const adminList = {
                 const confirm = window.confirm("Bạn có muốn xóa bài viết này không ?");
                 if (confirm) {
                     console.log(id);
-                    remove(id).then(() => {
+                    removeComment(id).then(() => {
                         alert("Delete Success");
-                        reRender(adminList, "#app");
+                        reRender(adminListComments, "#app");
                     });
                 }
             });
@@ -330,4 +317,4 @@ const adminList = {
     },
 };
 
-export default adminList;
+export default adminListComments;

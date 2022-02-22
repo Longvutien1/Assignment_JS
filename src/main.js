@@ -16,6 +16,9 @@ import SignUp from "./pages/sign_up";
 import adminListCategories from "./pages/admin/categories/list";
 import adminAddCategories from "./pages/admin/categories/add";
 import adminUpdateCategories from "./pages/admin/categories/update";
+import adminLisOrder from "./pages/admin/orders/list";
+import adminUpdateOrder from "./pages/admin/orders/update";
+import adminListComments from "./pages/admin/comments/list";
 
 const router = new Navigo("/", { linksSelector: "a", hash: true });
 
@@ -65,6 +68,11 @@ router.on({
     "/admin/categories/edit/:id": ({ data }) => {
         print(adminUpdateCategories, data.id);
     },
+    "/admin/orders/list": () => print(adminLisOrder),
+    "/admin/orders/edit/:id": ({ data }) => {
+        print(adminUpdateOrder, data.id);
+    },
+    "/admin/comments/list": () => print(adminListComments),
 
 });
 router.resolve();

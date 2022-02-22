@@ -191,6 +191,20 @@ const adminListUser = {
             menu2User.classList.toggle("active");
         });
 
+        const menu2Category = document.querySelector("#menu2-category");
+        document.querySelector("#menu-category").addEventListener("click", () => {
+            menu2Category.classList.toggle("active");
+        });
+
+        const menu2Order = document.querySelector("#menu2-order");
+        document.querySelector("#menu-order").addEventListener("click", () => {
+            menu2Order.classList.toggle("active");
+        });
+        const menu2Comment = document.querySelector("#menu2-comment");
+        document.querySelector("#menu-comment").addEventListener("click", () => {
+            menu2Comment.classList.toggle("active");
+        });
+
         // remove product
         const buttons = document.querySelectorAll(".btn");
 
