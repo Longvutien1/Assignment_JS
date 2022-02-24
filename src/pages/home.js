@@ -29,14 +29,9 @@ const HomePage = {
                     <div class="swiper books-slider z-0">
 
                         <div class="swiper-wrapper">
-                            <a href="#" class="swiper-slide"><img src="image/book-1.png" alt=""></a>
-                            <a href="#" class="swiper-slide"><img src="image/book-2.png" alt=""></a>
-                            <a href="#" class="swiper-slide"><img src="image/book-3.png" alt=""></a>
-                            <a href="#" class="swiper-slide"><img src="image/book-4.png" alt=""></a>
-                            <a href="#" class="swiper-slide"><img src="image/book-5.png" alt=""></a>
-                            <a href="#" class="swiper-slide"><img src="image/book-6.png" alt=""></a>    
+                            ${await ListProduct.listBookHeader()}    
                         </div>
-                        <img src="image/stand.png" class="stand" alt="">
+                        <img src="../image/stand.png" class="stand" alt="">
                     </div>
 
                 </div>

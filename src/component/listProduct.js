@@ -87,6 +87,28 @@ const ListProduct = {
                 `;
     },
 
+    async listBookHeader() {
+        const { data } = await getAllProduct();
+        // console.log(data);
+        return /* html */ `
+                    ${data
+        .map(
+            (item) => `
+
+            <a href="#" class="swiper-slide"><img src="${item.img}" alt=""></a>
+            
+                
+              
+                    `,
+        )
+        .join("")}
+            
+            
+            
+            
+                `;
+    },
+
     async listArrivals() {
         const { data } = await getAllProduct();
         return /* html */ `
