@@ -40,7 +40,7 @@ const Shop = {
           </ul>
     
           <ul>
-            <li class="border text-white pl-4 text-xl py-2 mt-8" style="background-color: #27ae60;color: #fff;">SẢN PHẨM ĐƯỢC YÊU THÍCH</li>
+            <li class="border text-white pl-4 text-xl py-2 mt-8" style="background-color: #27ae60;color: #fff;">FAVORITE PRODUCTS</li>
                 
                 ${await ListProduct.listProductTopViewShop()}
             <li class="border px-4  py-2" style="background-color: #27ae60;">
@@ -70,8 +70,7 @@ const Shop = {
               </ul>
             </div>
           <div id="product" class="product-shop sm:grid sm:grid-cols-1 sm:grid sm:grid-cols-2 lg:grid lg:grid-cols-3 gap-8 mt-8 ">
-          
-                ${idCategory ? await ListProduct.listProductByCategoryId(idCategory) : await ListProduct.listProductLimit(1)}
+                    ${idCategory ? await ListProduct.listProductByCategoryId(idCategory) : await ListProduct.listProductLimit(1)}
           </div>
 
           <!--end all sản phẩm  -->

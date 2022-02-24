@@ -36,7 +36,7 @@ export const getProductByName = (productName) => {
 };
 
 export const sortProductByView = () => {
-    const url = "/products?_sort=view&_order=desc";
+    const url = "/products?_sort=view&_order=desc&_limit=5";
     return instance.get(url);
 };
 

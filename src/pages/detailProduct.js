@@ -227,7 +227,7 @@ const DetailProduct = {
                     user: JSON.parse(localStorage.getItem("user")).user,
                     time,
                 }).then(async () => {
-                    alert("Update Successfully");
+                    alert("Comment Successfully");
                     console.log(id);
                     await reRender2(DetailProduct, id, "#app");
                 });
