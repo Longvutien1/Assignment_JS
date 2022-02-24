@@ -9,7 +9,11 @@ export const getOrderById = (id) => {
     const url = `/order/${id}`;
     return instance.get(url);
 };
+export const getOrderByIdUser = (id) => {
+    const url = `/order?userInformation.idUser=${id}`;
 
+    return instance.get(url);
+};
 export const addOrder = (order, product) => {
     const url = "/order";
     return instance.post(url, order, product);

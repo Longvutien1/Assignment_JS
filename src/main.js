@@ -19,6 +19,7 @@ import adminUpdateCategories from "./pages/admin/categories/update";
 import adminLisOrder from "./pages/admin/orders/list";
 import adminUpdateOrder from "./pages/admin/orders/update";
 import adminListComments from "./pages/admin/comments/list";
+import User from "./pages/user";
 
 const router = new Navigo("/", { linksSelector: "a", hash: true });
 
@@ -51,6 +52,9 @@ router.on({
     },
     "/shop/:id": ({ data }) => {
         print(Shop, data.id);
+    },
+    "/user/:id": ({ data }) => {
+        print(User, data.id);
     },
     "/admin": () => print(DashBoardPage),
     "/admin/products/add": () => print(adminNewAdd),

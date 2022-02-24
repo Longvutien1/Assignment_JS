@@ -70,8 +70,7 @@ const Shop = {
               </ul>
             </div>
           <div id="product" class="product-shop sm:grid sm:grid-cols-1 sm:grid sm:grid-cols-2 lg:grid lg:grid-cols-3 gap-8 mt-8 ">
-          
-                ${idCategory ? await ListProduct.listProductByCategoryId(idCategory) : await ListProduct.listProductLimit(1)}
+                    ${idCategory ? await ListProduct.listProductByCategoryId(idCategory) : await ListProduct.listProductLimit(1)}
           </div>
 
           <!--end all sản phẩm  -->

@@ -36,13 +36,14 @@ const Header = {
                     <a href="/#/">arrivals</a>
                     <a href="/#/">reviews</a>
                     <a href="/#/">blogs</a>
+                    
                     <!-- <a href="/#/admin">admin</a>-->
                    
                     <!-- nếu đã đăng nhập = user admin thì hiện admin -->
                     ${JSON.parse(localStorage.getItem("user")) ? `
                 
                     <a href="/#/admin" >admin</a>
-
+                    <a href="/#/user/${JSON.parse(localStorage.getItem("user")).user.id}">User</a>
                     ` : ""}
                      <!-- nếu đã đăng nhập hoặc tồn tại user thì hiển thị tên -->
                     ${localStorage.getItem("user") ? `
