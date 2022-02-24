@@ -20,8 +20,8 @@ const Header = {
             <div class="icons">
                 <div id="search-btn" class="fas fa-search"></div>
                
-                <a href="/cart" class="fas fa-shopping-cart"> <span class="text-sm">${JSON.parse(localStorage.getItem("cart")) ? JSON.parse(localStorage.getItem("cart")).length : ""}<span></a>
-                <a href="sign_in" class="fas fa-user"></a>
+                <a href="/#/cart" class="fas fa-shopping-cart"> <span class="text-sm">${JSON.parse(localStorage.getItem("cart")) ? JSON.parse(localStorage.getItem("cart")).length : ""}<span></a>
+                <a href="/#/sign_in" class="fas fa-user"></a>
                
                 <a id="logout" class="text-xl"><i class='bx bx-log-out-circle bx-rotate-180' ></i></a>
                
